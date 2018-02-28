@@ -3,6 +3,8 @@ package com.example.hannahkern.tankup;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -79,8 +81,15 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
          if (id == R.id.nav_map) {
+
+             fragment = new MapFragment();
+             fm.beginTransaction()
+                     .add(R.id.fragment_container, fragment)
+                     .commit();
 
         } else if (id == R.id.nav_share) {
 
