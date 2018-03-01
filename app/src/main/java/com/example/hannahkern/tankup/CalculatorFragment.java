@@ -40,7 +40,7 @@ public class CalculatorFragment extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
-        mGas = (EditText) v.findViewById(R.id.enter_price);
+        /*mGas = (EditText) v.findViewById(R.id.enter_price);
             mGas.setText( mCalculator.getGas());
             mGas.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -106,7 +106,7 @@ public class CalculatorFragment extends Fragment{
                 // Displays the calculated result
                 mResultText.setText(String.valueOf(result));
                 }
-            });
+            });*/
 
             return v;
 

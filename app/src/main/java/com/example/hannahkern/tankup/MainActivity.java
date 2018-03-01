@@ -93,20 +93,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Fragment fragment = null;
-        if (id == R.id.map) {
+        if (id == R.id.calculator) {
 
             CalculatorFragment calculatorFragment = new CalculatorFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.drawer_layout,calculatorFragment)
+                    .replace(R.id.content_frame,calculatorFragment)
                     .addToBackStack(null)
                     .commit();
-        } else if (id == R.id.calculateButton) {
-            CalculatorFragment calculatorFragment = new CalculatorFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.drawer_layout,calculatorFragment)
-                    .addToBackStack(null)
-                    .commit();
+        } else if (id == R.id.nav_map) {
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_profile) {
