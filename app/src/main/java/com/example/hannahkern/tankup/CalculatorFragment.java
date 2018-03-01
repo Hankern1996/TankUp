@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -90,4 +91,10 @@ public class CalculatorFragment extends Fragment{
 
         }
 
+
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(String title);
+
+    }
 }

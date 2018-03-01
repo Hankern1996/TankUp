@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements  NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
 
 
@@ -90,17 +88,29 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment fragment = null;
+        if (fragment ==null){
         if (id == R.id.map) {
-            // Handle the camera action
+
+            fragment = new CalculatorFragment();
+
         } else if (id == R.id.calculateButton) {
+            fragment = new CalculatorFragment();
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_profile) {
 
+        }}
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.drawer_layout, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
