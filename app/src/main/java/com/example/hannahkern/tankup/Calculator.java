@@ -4,9 +4,11 @@ package com.example.hannahkern.tankup;
  * Created by hannahkern on 28.02.18.
  */
 
-public class Roadtrip {
+public class Calculator {
 
     private String gas;
+    private String km;
+    private double ergebnis;
 
     public String getGas() {
         return gas;
@@ -16,11 +18,11 @@ public class Roadtrip {
         this.gas = gas;
     }
 
-    public double getKm() {
+    public String getKm() {
         return km;
     }
 
-    public void setKm(double km) {
+    public void setKm(String km) {
         this.km = km;
     }
 
@@ -31,10 +33,5 @@ public class Roadtrip {
     public void setErgebnis(double ergebnis) {
         this.ergebnis = ergebnis;
     }
-
-    private double km;
-    private double ergebnis;
-
-
 
 }

@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -89,24 +87,24 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_map) {
 
 
-            setContentView(R.layout.fragment_test);
+            setContentView(R.layout.fragment_calculator);
 
             FragmentManager fm = getSupportFragmentManager();
             Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
             if (fragment == null) {
-                fragment = new MapFragment();
+                fragment = new CalculatorFragment();
                 fm.beginTransaction()
                         .add(R.id.fragment_container, fragment)
                         .commit();
 
 
-             /*fragment = new MapFragment();
+             /*fragment = new CalculatorFragment();
              FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
              ft.replace(R.id.fragment_container, fragment);
              ft.commit();*/
 
-             /*fragment = new MapFragment();
+             /*fragment = new CalculatorFragment();
              fm.beginTransaction()
                      .add(R.id.fragment_container, fragment)
                      .commit();*/
