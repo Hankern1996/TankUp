@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 public class CalculatorFragment extends Fragment{
 
-    private Calculator mCalculator;
     private EditText mGas;
     private EditText mKm;
     private TextView mResultText;
@@ -79,13 +78,12 @@ public class CalculatorFragment extends Fragment{
                 }
             });*/
 
+            mResultText = (TextView) v.findViewById(R.id.result);
+
             mCalculateButton = (Button) v.findViewById(R.id.calculateButton);
             mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mResultText = (TextView) v.findViewById(R.id.result);
-
-                calculate();
-
+                    calculate();
                 }
             });
 
@@ -93,7 +91,7 @@ public class CalculatorFragment extends Fragment{
 
         }
 
-        public void calculate(double value1, double value2){
+        private void calculate()throws NumberFormatException{
             // Gets the two EditText controls' Editable values
             Editable editableGas = mGas.getText(),
                     editableKm = mKm.getText();
@@ -113,10 +111,9 @@ public class CalculatorFragment extends Fragment{
 
             // Calculates the result
             result = value1 * value2;
-            String ergebnis = Double.toString(result);
 
             // Displays the calculated result
-            return ergebnis;
+            mResultText.setText(String.valueOf(result));
         }
 
 }
