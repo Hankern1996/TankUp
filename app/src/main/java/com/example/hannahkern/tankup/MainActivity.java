@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.map) {
             // Handle the camera action
-        } else if (id == R.id.calculate) {
+        } else if (id == R.id.calculateButton) {
 
         } else if (id == R.id.nav_share) {
 
