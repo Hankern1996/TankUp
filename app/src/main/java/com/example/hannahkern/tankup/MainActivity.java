@@ -94,24 +94,25 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         Fragment fragment = null;
-        if (fragment ==null){
         if (id == R.id.map) {
 
-            fragment = new CalculatorFragment();
-
+            CalculatorFragment calculatorFragment = new CalculatorFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.drawer_layout,calculatorFragment)
+                    .addToBackStack(null)
+                    .commit();
         } else if (id == R.id.calculateButton) {
-            fragment = new CalculatorFragment();
-
+            CalculatorFragment calculatorFragment = new CalculatorFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.drawer_layout,calculatorFragment)
+                    .addToBackStack(null)
+                    .commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_profile) {
 
-        }}
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.drawer_layout, fragment);
-            ft.commit();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
