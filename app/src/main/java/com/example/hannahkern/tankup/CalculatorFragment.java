@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by hannahkern on 28.02.18.
@@ -23,6 +24,7 @@ public class CalculatorFragment extends Fragment{
     private Calculator mCalculator;
     private EditText mGas;
     private EditText mKm;
+    private TextView mResultText;
     private Button mCalculateButton;
 
     @Override
@@ -36,9 +38,9 @@ public class CalculatorFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-            View v = inflater.inflate(R.layout.fragment_calculator, container, false);
+        View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
-            mGas = (EditText) v.findViewById(R.id.enter_price);
+        mGas = (EditText) v.findViewById(R.id.enter_price);
             mGas.setText( mCalculator.getGas());
             mGas.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -80,21 +82,36 @@ public class CalculatorFragment extends Fragment{
             mCalculateButton = (Button) v.findViewById(R.id.calculateButton);
             mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                mResultText = (TextView) v.findViewById(R.id.result);
 
+                // Gets the two EditText controls' Editable values
+                Editable editableGas = mGas.getText(),
+                        editableKm = mKm.getText();
+
+                // Initializes the double values and result
+                double value1 = 0.0,
+                        value2 = 0.0,
+                        result;
+
+                // If the Editable values are not null, obtains their double values by parsing
+                if (editableGas != null)
+                    value1 = Double.parseDouble(editableGas.toString());
+
+                if (editableKm != null)
+                    value2 = Double.parseDouble(editableKm.toString());
+
+                // Calculates the result
+                result = value1 * value2;
+
+                // Displays the calculated result
+                mResultText.setText(String.valueOf(result));
                 }
             });
-
-
-            Log.i("Hier",mGas.toString());
 
             return v;
 
         }
 
-
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(String title);
-
-    }
 }
+
+
