@@ -1,5 +1,6 @@
 package com.example.hannahkern.tankup;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,6 +26,7 @@ public class CalculatorFragment extends Fragment{
     private EditText mKm;
     private TextView mResultText;
     private Button mCalculateButton;
+    private Button mSendButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class CalculatorFragment extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
-            mGas = (EditText) v.findViewById(R.id.enter_price);
+        mGas = (EditText) v.findViewById(R.id.enter_price);
             /*mGas.setText( mCalculator.getGas());
             mGas.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -59,7 +61,7 @@ public class CalculatorFragment extends Fragment{
             });*/
 
 
-            mKm = (EditText) v.findViewById(R.id.enter_distance);
+        mKm = (EditText) v.findViewById(R.id.enter_distance);
             /*mKm.setText(mCalculator.getKm());
             mKm.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -78,16 +80,30 @@ public class CalculatorFragment extends Fragment{
                 }
             });*/
 
-            mResultText = (TextView) v.findViewById(R.id.result);
+        mResultText = (TextView) v.findViewById(R.id.result);
 
-            mCalculateButton = (Button) v.findViewById(R.id.calculateButton);
-            mCalculateButton.setOnClickListener(new View.OnClickListener() {
+        mCalculateButton = (Button) v.findViewById(R.id.calculateButton);
+        mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                     calculate();
                 }
             });
 
-            return v;
+        mSendButton = (Button) v.findViewById(R.id.sendButton);
+        mSendButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, getMessage());
+                i.putExtra(Intent.EXTRA_SUBJECT,
+                        getString(R.string.message_subject));
+                i = Intent.createChooser(i, getString(R.string.send_message));
+                startActivity(i);
+            }
+        });
+
+
+        return v;
 
         }
 
@@ -115,6 +131,16 @@ public class CalculatorFragment extends Fragment{
             // Displays the calculated result
             mResultText.setText(String.valueOf(result));
         }
+
+    private String getMessage() {
+
+        String price = mResultText.getText().toString();
+
+
+        @SuppressLint("StringFormatMatches") String message = getString(R.string.message, price);
+
+        return message;
+    }
 
 }
 

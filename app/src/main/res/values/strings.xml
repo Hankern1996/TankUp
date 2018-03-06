@@ -6,4 +6,13 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="message_subject">Reminder for gas price payment</string>
+    <string name="message">
+      Hey! My TankUp App calculated the gas price for our trip.
+        I would like to remind you to pay me %1$s for the gas.
+        Thank you!
+    </string>
+    <string name="send_message">Send message via:</string>
+
 </resources>
