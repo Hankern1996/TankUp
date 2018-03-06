@@ -1,5 +1,6 @@
 package com.example.hannahkern.tankup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+
+import com.google.android.gms.maps.MapFragment;
 
 public class MainActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener {
@@ -102,6 +105,9 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_map) {
 
+            Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
+            MainActivity.this.startActivity(intent1);
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_profile) {
@@ -113,4 +119,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
