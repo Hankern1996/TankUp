@@ -1,10 +1,11 @@
 package com.example.hannahkern.tankup;
 
-
+ /*
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ import Modules.Route;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
 
+   ArrayList<LatLng> MarkerPoints;
     private GoogleMap mMap;
     private Button btnFindPath;
     private EditText etOrigin;
@@ -48,6 +50,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkLocationPermission();
+        }
+        // Initializing
+        MarkerPoints = new ArrayList<>();
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map1);
@@ -176,12 +186,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             polylinePaths.add(mMap.addPolyline(polylineOptions));
         }
     }
-}
+}*/
 
 
 
 
-/*
+
 import android.app.FragmentTransaction;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -205,10 +215,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.map1);
         mapFragment.getMapAsync(this);
-
-
 
 
     }
@@ -222,7 +230,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
-
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -232,15 +240,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+}
 
-   /* public static MapFragment newInstance (GoogleMapOptions options){
-
-
-
-
-
-    }
-
-
-}*/
 
