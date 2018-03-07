@@ -33,6 +33,9 @@ public class CalculatorPagerActivity extends AppCompatActivity {
         Intent intent = new Intent(packageContext, CalculatorPagerActivity.class);
         intent.putExtra(EXTRA_CALCULATOR_ID, calculatorId);
         return intent;
+
+
+
     }
 
 
@@ -40,7 +43,18 @@ public class CalculatorPagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculator_pager);                 //set view
+        setContentView(R.layout.activity_calculator_pager);
+        //set view
+
+
+
+
+
+
+
+
+
+
 
         UUID calculatorId = (UUID) getIntent()
                 .getSerializableExtra(EXTRA_CALCULATOR_ID);
