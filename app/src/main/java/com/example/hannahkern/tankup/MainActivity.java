@@ -112,8 +112,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_profile) {
-
+        } else if (id == R.id.nav_trips) {
+            CalculatorListFragment calculatorFragment = new CalculatorListFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame,calculatorFragment)
+                    .addToBackStack(null)
+                    .commit();
         }
 
 

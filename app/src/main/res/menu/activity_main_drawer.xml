@@ -8,7 +8,6 @@
         <item  android:title="Calculator"
                 android:id="@+id/calculator"
                 android:icon="@drawable/logo"/>
-
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/map"
@@ -18,9 +17,9 @@
             android:icon="@drawable/ic_menu_share"
             android:title="Share" />
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/nav_trips"
             android:icon="@drawable/profil"
-            android:title="Profile" />
+            android:title="My trips" />
 
     </group>
 
