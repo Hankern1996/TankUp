@@ -41,6 +41,9 @@ public class CalculatorFragment extends Fragment{
         CalculatorFragment fragment = new CalculatorFragment();
         fragment.setArguments(args);
         return fragment;
+
+
+
     }
 
     @Override
@@ -49,6 +52,8 @@ public class CalculatorFragment extends Fragment{
 
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
+
+
     }
 
     @Nullable
@@ -56,6 +61,11 @@ public class CalculatorFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
+
+       // String strtext = getArguments().getString("edttext");
+
+        //MapsActivity activity = (MapsActivity) getActivity();
+       // String myDataFromActivity = activity.sendMessage();
 
         mGas = (EditText) v.findViewById(R.id.enter_price);
         mGas.setText(mCalculator.getGas());

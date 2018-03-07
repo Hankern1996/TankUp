@@ -3,6 +3,7 @@ package com.example.hannahkern.tankup;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -10,8 +11,11 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +55,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
 
+    private Button changeView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +76,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 sendRequest();
             }
         });
+
+        changeView = (Button) findViewById(R.id.changeView);
+        changeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+               // sendMessage();
+
+                Intent intent2 = new Intent(MapsActivity.this, CalculatorPagerActivity.class);
+                intent2.putExtra("data",mRoute);
+                MapsActivity.this.startActivity(intent2);
+
+
+
+            }
+        });
+
+
     }
 
+    public static final String EXTRA_MESSAGE = "com.example.hannahkern.tankup";
+        public String sendMessage(){
+
+            return mRoute;
+
+            /*Bundle bundle = new Bundle();
+            bundle.putString("edttext", mRoute);
+// set Fragmentclass Arguments
+            CalculatorFragment fragobj = new CalculatorFragment();
+            fragobj.setArguments(bundle);*/
+
+        }
 
         private void sendRequest() {
         String origin = etOrigin.getText().toString();
@@ -98,11 +135,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //STARTKOORDINATEN => AKTUELLER STANDORT
 
-        LatLng hcmus = new LatLng(10.762963, 106.682394);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 18));
+        LatLng hkr = new LatLng(56.048501, 14.146265);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hkr, 18));
         originMarkers.add(mMap.addMarker(new MarkerOptions()
-                .title("Đại học Khoa học tự nhiên")
-                .position(hcmus)));
+                .title("Your Location")
+                .position(hkr)));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -146,7 +183,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
+    private String mRoute;
     @Override
     public void onDirectionFinderSuccess(List<Route> routes) {
         progressDialog.dismiss();
@@ -158,6 +195,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
             ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
             ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
+            mRoute = route.distance.text;
+
             //if abfrage ob meilen oder km
             // dieser wert => calculator
             //button "change view"
@@ -196,7 +235,6 @@ import android.os.Bundle;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;

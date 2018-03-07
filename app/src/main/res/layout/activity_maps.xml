@@ -5,7 +5,9 @@
     tools:context="com.example.hannahkern.tankup.MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"  >
+    android:orientation="vertical"
+    android:id="@+id/maps12">
+
 
     <EditText
         android:layout_width="match_parent"
@@ -29,6 +31,12 @@
             android:layout_height="wrap_content"
             android:text="Find path"
             android:id="@+id/btnFindPath" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculator"
+            android:id="@+id/changeView"/>
 
         <TextView
             android:layout_marginLeft="5dp"
