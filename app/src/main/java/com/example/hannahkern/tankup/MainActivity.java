@@ -108,6 +108,14 @@ public class MainActivity extends AppCompatActivity
             Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
             MainActivity.this.startActivity(intent1);
 
+            /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, mMapFragment)
+                    .addToBackStack(null)
+                    .commit();*/
+
+
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_profile) {
