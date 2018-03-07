@@ -54,7 +54,8 @@ public class CalculatorFragment extends Fragment{
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
 
-        item = getActivity().getIntent().getExtras().getString("data");
+        //item = getActivity().getIntent().getExtras().getString("data");
+        // b  = item.substring(0, item.length()-2);
 
     }
 
@@ -90,7 +91,13 @@ public class CalculatorFragment extends Fragment{
 
 
         mKm = (EditText) v.findViewById(R.id.enter_distance);
-        mKm.setText(item);
+
+        if(item != null){
+            mKm.setText(item);
+        }
+        else {
+
+        mKm.setText(mCalculator.getKm());}
         mKm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -154,6 +161,7 @@ public class CalculatorFragment extends Fragment{
                 value1 = Double.parseDouble(editableGas.toString());
 
             if (editableKm != null)
+
                 value2 = Double.parseDouble(editableKm.toString());
 
 

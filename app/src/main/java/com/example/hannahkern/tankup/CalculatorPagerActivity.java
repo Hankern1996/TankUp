@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +16,7 @@ import java.util.UUID;
  * Created by pauli on 07.03.2018.
  */
 
-public class CalculatorPagerActivity extends MainActivity {
+public class CalculatorPagerActivity extends AppCompatActivity {
     public static final String EXTRA_CALCULATOR_ID =
             "com.example.hannahkern.tankup.calculator_id";
 
