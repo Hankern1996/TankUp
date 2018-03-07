@@ -264,7 +264,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.SphericalUtil;
 
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
@@ -475,14 +474,7 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     private void calculateDistance() {
-        LatLng from = new LatLng(fromLatitude,fromLongitude);
-        LatLng to = new LatLng(toLatitude,toLongitude);
 
-        //Calculating the distance in meters
-        Double distance = SphericalUtil.computeDistanceBetween(from, to);
-
-        //Displaying the distance
-        Toast.makeText(this,String.valueOf(distance+" Meters"),Toast.LENGTH_SHORT).show();
     }
 }
 
