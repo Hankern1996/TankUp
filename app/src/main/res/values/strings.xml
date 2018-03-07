@@ -14,5 +14,6 @@
         Thank you!
     </string>
     <string name="send_message">Send message via:</string>
+    <string name="date_picker_title">Date of trip:</string>
 
 </resources>

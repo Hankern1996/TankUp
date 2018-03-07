@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -39,6 +40,21 @@ public class CalculatorListFragment extends Fragment {
         super.onResume();
         updateUI();
     }
+
+    /*@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.new_calculator:
+                Calculator calculator = new Calculator();
+                CalculatorLab.get(getActivity()).addCalculator(calculator);
+                Intent intent = CalculatorPagerActivity
+                        .newIntent(getActivity(), calculator.getId());
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }*/
 
     private void updateUI() {
         CalculatorLab calculatorLab = CalculatorLab.get(getActivity());

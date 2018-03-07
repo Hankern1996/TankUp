@@ -1,13 +1,16 @@
 package com.example.hannahkern.tankup;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -24,6 +28,9 @@ import java.util.UUID;
 
 public class CalculatorFragment extends Fragment{
     private static final String ARG_CALCULATOR_ID = "calculator_id";
+    private static final String DIALOG_DATE = "DialogDate";
+
+    private static final int REQUEST_DATE = 0;
 
     private Calculator mCalculator;
 
@@ -33,6 +40,7 @@ public class CalculatorFragment extends Fragment{
     private Button mDateButton;
     private Button mCalculateButton;
     private Button mSendButton;
+
     private String item;
 
     public static CalculatorFragment newInstance(UUID calculatorId) {
@@ -42,9 +50,6 @@ public class CalculatorFragment extends Fragment{
         CalculatorFragment fragment = new CalculatorFragment();
         fragment.setArguments(args);
         return fragment;
-
-
-
     }
 
     @Override
@@ -139,14 +144,41 @@ public class CalculatorFragment extends Fragment{
         });
 
         mDateButton = (Button) v.findViewById(R.id.date_button);
-        mDateButton.setText(mCalculator.getDate().toString());
-        mDateButton.setEnabled(false);
+        updateDate();
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                DatePickerFragment dialog = DatePickerFragment
+                        .newInstance(mCalculator.getDate());
+                dialog.setTargetFragment(CalculatorFragment.this, REQUEST_DATE);
+                dialog.show(manager, DIALOG_DATE);
+            }
+        });
 
         return v;
 
         }
 
-        private void calculate()throws NumberFormatException{
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_DATE) {
+            Date date = (Date) data
+                    .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            mCalculator.setDate(date);
+            updateDate();
+        }
+    }
+
+    private void updateDate() {
+        mDateButton.setText(mCalculator.getDate().toString());
+    }
+
+    private void calculate()throws NumberFormatException{
             // Gets the two EditText controls' Editable values
             Editable editableGas = mGas.getText(),
                     editableKm = mKm.getText();
