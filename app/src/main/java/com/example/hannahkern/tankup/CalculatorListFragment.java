@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -40,9 +42,31 @@ public class CalculatorListFragment extends Fragment {
         mCalculatorRecyclerView.setAdapter(mAdapter);
     }
 
-    private class CalculatorHolder extends RecyclerView.ViewHolder {
+    private class CalculatorHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
+
+        private Calculator mCalculator;
+        private TextView mKmTextView;
+        private TextView mDateTextView;
+
         public CalculatorHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_calculator, parent, false));
+            itemView.setOnClickListener(this);
+
+            mDateTextView = (TextView) itemView.findViewById(R.id.calculator_date);
+            mKmTextView = (TextView) itemView.findViewById(R.id.calculator_price);
+        }
+
+        public void bind(Calculator calculator) {
+            mCalculator = calculator;
+            mDateTextView.setText(mCalculator.getDate().toString());
+            mKmTextView.setText(mCalculator.getKm());
+        }
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(getActivity(),
+                     " clicked!", Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
@@ -63,7 +87,8 @@ public class CalculatorListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(CalculatorHolder holder, int position) {
-
+            Calculator calculator = mCalculators.get(position);
+            holder.bind(calculator);
         }
 
         @Override
