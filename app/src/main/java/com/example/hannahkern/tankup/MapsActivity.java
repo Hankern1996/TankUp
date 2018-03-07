@@ -190,7 +190,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-
+/*
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.FragmentActivity;
@@ -232,7 +232,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @Override
+   /* @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
@@ -240,6 +240,237 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+}*/
+
+
+import android.location.Location;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MapsActivity extends FragmentActivity implements
+        OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        GoogleMap.OnMarkerDragListener,
+        GoogleMap.OnMapLongClickListener,
+        View.OnClickListener{
+
+    //Our Map
+    private GoogleMap mMap;
+
+    //To store longitude and latitude from map
+    private double longitude;
+    private double latitude;
+
+    //From -> the first coordinate from where we need to calculate the distance
+    private double fromLongitude;
+    private double fromLatitude;
+
+    //To -> the second coordinate to where we need to calculate the distance
+    private double toLongitude;
+    private double toLatitude;
+
+    //Google ApiClient
+    private GoogleApiClient googleApiClient;
+
+    //Our buttons
+    private Button buttonSetTo;
+    private Button buttonSetFrom;
+    private Button buttonCalcDistance;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        //Initializing googleapi client
+        // ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .addApi(AppIndex.API).build();
+
+        buttonSetTo = (Button) findViewById(R.id.buttonSetTo);
+        buttonSetFrom = (Button) findViewById(R.id.buttonSetFrom);
+        buttonCalcDistance = (Button) findViewById(R.id.buttonCalcDistance);
+
+        buttonSetTo.setOnClickListener(this);
+        buttonSetFrom.setOnClickListener(this);
+        buttonCalcDistance.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        googleApiClient.connect();
+        super.onStart();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Maps Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://net.simplifiedcoding.googlemapsdistancecalc/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(googleApiClient, viewAction);
+    }
+
+    @Override
+    protected void onStop() {
+        googleApiClient.disconnect();
+        super.onStop();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Maps Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://net.simplifiedcoding.googlemapsdistancecalc/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(googleApiClient, viewAction);
+    }
+
+    //Getting current location
+    private void getCurrentLocation() {
+        mMap.clear();
+        //Creating a location object
+        Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+        if (location != null) {
+            //Getting longitude and latitude
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+
+            //moving the map to location
+            moveMap();
+        }
+    }
+
+    //Function to move the map
+    private void moveMap() {
+        //Creating a LatLng Object to store Coordinates
+        LatLng latLng = new LatLng(latitude, longitude);
+
+        //Adding marker to map
+        mMap.addMarker(new MarkerOptions()
+                .position(latLng) //setting position
+                .draggable(true) //Making the marker draggable
+                .title("Current Location")); //Adding a title
+
+        //Moving the camera
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        //Animating the camera
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng latLng = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(latLng).draggable(true));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.setOnMarkerDragListener(this);
+        mMap.setOnMapLongClickListener(this);
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        getCurrentLocation();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        //Clearing all the markers
+        mMap.clear();
+        //Adding a new marker to the current pressed position
+        mMap.addMarker(new MarkerOptions()
+                .position(latLng)
+                .draggable(true));
+
+        latitude = latLng.latitude;
+        longitude = latLng.longitude;
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        //Getting the coordinates
+        latitude = marker.getPosition().latitude;
+        longitude = marker.getPosition().longitude;
+
+        //Moving the map
+        moveMap();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == buttonSetFrom){
+            fromLatitude = latitude;
+            fromLongitude = longitude;
+            Toast.makeText(this,"From set",Toast.LENGTH_SHORT).show();
+        }
+
+        if(v == buttonSetTo){
+            toLatitude = latitude;
+            toLongitude = longitude;
+            Toast.makeText(this,"To set",Toast.LENGTH_SHORT).show();
+        }
+
+        if(v == buttonCalcDistance){
+            //This method will show the distance and will also draw the path
+            calculateDistance();
+        }
     }
 }
 
