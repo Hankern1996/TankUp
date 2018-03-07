@@ -65,6 +65,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+
+
+
+
+
+
+
+
+
+
+
     private void sendRequest() {
         String origin = etOrigin.getText().toString();
         String destination = etDestination.getText().toString();
@@ -89,11 +100,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng hcmus = new LatLng(56.048943, 14.147391);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 18));
+        LatLng hkr = new LatLng(56.048943, 14.147391);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hkr, 18));
         originMarkers.add(mMap.addMarker(new MarkerOptions()
                 .title("HKR")
-                .position(hcmus)));
+                .position(hkr)));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
