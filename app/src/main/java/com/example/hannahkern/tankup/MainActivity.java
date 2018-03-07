@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,9 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-
-import com.google.android.gms.maps.MapFragment;
 
 public class MainActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener {
@@ -92,11 +86,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.calculator) {
 
-            CalculatorFragment calculatorFragment = new CalculatorFragment();
+            Intent intent2 = new Intent(MainActivity.this, CalculatorPagerActivity.class);
+            MainActivity.this.startActivity(intent2);
+
+            /*CalculatorFragment calculatorFragment = new CalculatorFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_frame,calculatorFragment)
                     .addToBackStack(null)
-                    .commit();
+                    .commit();*/
+
         } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
@@ -107,8 +105,6 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.content_frame, mMapFragment)
                     .addToBackStack(null)
                     .commit();*/
-
-
 
         } else if (id == R.id.nav_share) {
 

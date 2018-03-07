@@ -1,5 +1,6 @@
 package com.example.hannahkern.tankup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -34,12 +34,22 @@ public class CalculatorListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI() {
         CalculatorLab calculatorLab = CalculatorLab.get(getActivity());
         List<Calculator> calculators = calculatorLab.getCalculators();
 
-        mAdapter = new CalculatorAdapter(calculators);
-        mCalculatorRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new CalculatorAdapter(calculators);
+            mCalculatorRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class CalculatorHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
@@ -64,9 +74,8 @@ public class CalculatorListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(getActivity(),
-                     " clicked!", Toast.LENGTH_SHORT)
-                    .show();
+            Intent intent = CalculatorPagerActivity.newIntent(getActivity(), mCalculator.getId());
+            startActivity(intent);
         }
     }
 

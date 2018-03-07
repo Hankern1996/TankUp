@@ -16,11 +16,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.UUID;
+
 /**
  * Created by hannahkern on 28.02.18.
  */
 
 public class CalculatorFragment extends Fragment{
+    private static final String ARG_CALCULATOR_ID = "calculator_id";
+
     private Calculator mCalculator;
 
     private EditText mGas;
@@ -30,11 +34,21 @@ public class CalculatorFragment extends Fragment{
     private Button mCalculateButton;
     private Button mSendButton;
 
+    public static CalculatorFragment newInstance(UUID crimeId) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CALCULATOR_ID, crimeId);
+
+        CalculatorFragment fragment = new CalculatorFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mCalculator = new Calculator();
+        UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
+        mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
     }
 
     @Nullable
@@ -44,6 +58,7 @@ public class CalculatorFragment extends Fragment{
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
         mGas = (EditText) v.findViewById(R.id.enter_price);
+        mGas.setText(mCalculator.getGas());
         mGas.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -63,6 +78,7 @@ public class CalculatorFragment extends Fragment{
 
 
         mKm = (EditText) v.findViewById(R.id.enter_distance);
+        mKm.setText(mCalculator.getKm());
         mKm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -81,6 +97,7 @@ public class CalculatorFragment extends Fragment{
         });
 
         mResultText = (TextView) v.findViewById(R.id.result);
+        mResultText.setText((CharSequence) mCalculator.getErgebnis());
 
         mCalculateButton = (Button) v.findViewById(R.id.calculateButton);
         mCalculateButton.setOnClickListener(new View.OnClickListener() {
