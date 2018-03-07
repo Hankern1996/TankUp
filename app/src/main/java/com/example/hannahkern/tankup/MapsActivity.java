@@ -190,7 +190,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-/*
+
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.FragmentActivity;
@@ -216,7 +216,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map1);
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
 
@@ -232,7 +232,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-   /* @Override
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
@@ -241,9 +241,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
-}*/
+}
 
-
+/*
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -476,6 +476,6 @@ public class MapsActivity extends FragmentActivity implements
     private void calculateDistance() {
 
     }
-}
+}*/
 
 
