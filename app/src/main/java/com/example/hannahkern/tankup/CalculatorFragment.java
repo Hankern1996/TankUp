@@ -33,6 +33,7 @@ public class CalculatorFragment extends Fragment{
     private Button mDateButton;
     private Button mCalculateButton;
     private Button mSendButton;
+    private String item;
 
     public static CalculatorFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
@@ -53,6 +54,7 @@ public class CalculatorFragment extends Fragment{
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
 
+        item = getActivity().getIntent().getExtras().getString("data");
 
     }
 
@@ -88,7 +90,7 @@ public class CalculatorFragment extends Fragment{
 
 
         mKm = (EditText) v.findViewById(R.id.enter_distance);
-        mKm.setText(mCalculator.getKm());
+        mKm.setText(item);
         mKm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
