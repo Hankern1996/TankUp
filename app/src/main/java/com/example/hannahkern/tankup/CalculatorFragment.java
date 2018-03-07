@@ -35,9 +35,9 @@ public class CalculatorFragment extends Fragment{
     private Button mSendButton;
     private String item;
 
-    public static CalculatorFragment newInstance(UUID crimeId) {
+    public static CalculatorFragment newInstance(UUID calculatorId) {
         Bundle args = new Bundle();
-        args.putSerializable(ARG_CALCULATOR_ID, crimeId);
+        args.putSerializable(ARG_CALCULATOR_ID, calculatorId);
 
         CalculatorFragment fragment = new CalculatorFragment();
         fragment.setArguments(args);

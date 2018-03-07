@@ -3,13 +3,10 @@ package com.example.hannahkern.tankup;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +15,7 @@ import java.util.UUID;
  * Created by pauli on 07.03.2018.
  */
 
-public class CalculatorPagerActivity extends AppCompatActivity {
+public class CalculatorPagerActivity extends MainActivity {
     public static final String EXTRA_CALCULATOR_ID =
             "com.example.hannahkern.tankup.calculator_id";
 
@@ -42,9 +39,9 @@ public class CalculatorPagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ad_pager);                 //set view
+        setContentView(R.layout.activity_calculator_pager);                 //set view
 
-        UUID adId = (UUID) getIntent()
+        UUID calculatorId = (UUID) getIntent()
                 .getSerializableExtra(EXTRA_CALCULATOR_ID);
 
         mViewPager = (ViewPager) findViewById(R.id.calculator_view_pager);
@@ -55,7 +52,7 @@ public class CalculatorPagerActivity extends AppCompatActivity {
 
             @Override
             public Fragment getItem(int position) {
-                Calculator calculator = mCalculators.get(position);                         //get data set from AdLab
+                Calculator calculator = mCalculators.get(position);
                 return CalculatorFragment.newInstance(calculator.getId());
             }
 
@@ -66,7 +63,7 @@ public class CalculatorPagerActivity extends AppCompatActivity {
         });
 
         for (int i = 0; i < mCalculators.size(); i++) {                    //find index to display via looping
-            if (mCalculators.get(i).getId().equals(adId)) {
+            if (mCalculators.get(i).getId().equals(calculatorId)) {
                 mViewPager.setCurrentItem(i);
                 break;
             }
