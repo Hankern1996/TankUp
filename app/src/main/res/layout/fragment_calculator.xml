@@ -13,7 +13,10 @@
         android:layout_marginBottom="2dp"
         android:text="Calculator"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_button"/>
 
     <TextView
         style="?android:listSeparatorTextViewStyle"

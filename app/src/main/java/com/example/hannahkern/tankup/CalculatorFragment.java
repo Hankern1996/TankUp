@@ -21,10 +21,12 @@ import android.widget.TextView;
  */
 
 public class CalculatorFragment extends Fragment{
+    private Calculator mCalculator;
 
     private EditText mGas;
     private EditText mKm;
     private TextView mResultText;
+    private Button mDateButton;
     private Button mCalculateButton;
     private Button mSendButton;
 
@@ -32,7 +34,7 @@ public class CalculatorFragment extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        mCalculator = new Calculator();
     }
 
     @Nullable
@@ -42,43 +44,41 @@ public class CalculatorFragment extends Fragment{
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
         mGas = (EditText) v.findViewById(R.id.enter_price);
-            /*mGas.setText( mCalculator.getGas());
-            mGas.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // This space intentionally left blank
-                }
+        mGas.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    //mCalculator.setGas(s.toString());
-                }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mCalculator.setGas(s.toString());
+            }
 
-                @Override
-                public void afterTextChanged(Editable s) {
-                    // This one too
-                }
-            });*/
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This one too
+            }
+        });
 
 
         mKm = (EditText) v.findViewById(R.id.enter_distance);
-            /*mKm.setText(mCalculator.getKm());
-            mKm.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // This space intentionally left blank
-                }
+        mKm.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    mCalculator.setKm(s.toString());
-                }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mCalculator.setKm(s.toString());
+            }
 
-                @Override
-                public void afterTextChanged(Editable s) {
-                    //This one too
-                }
-            });*/
+            @Override
+            public void afterTextChanged(Editable s) {
+                //This one too
+            }
+        });
 
         mResultText = (TextView) v.findViewById(R.id.result);
 
@@ -102,6 +102,9 @@ public class CalculatorFragment extends Fragment{
             }
         });
 
+        mDateButton = (Button) v.findViewById(R.id.date_button);
+        mDateButton.setText(mCalculator.getDate().toString());
+        mDateButton.setEnabled(false);
 
         return v;
 
@@ -130,6 +133,7 @@ public class CalculatorFragment extends Fragment{
 
             // Displays the calculated result
             mResultText.setText(String.valueOf(result));
+            mCalculator.setErgebnis(String.valueOf(result));
         }
 
     private String getMessage() {

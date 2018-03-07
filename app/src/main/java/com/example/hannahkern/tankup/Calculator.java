@@ -1,37 +1,59 @@
 package com.example.hannahkern.tankup;
 
+import java.util.Date;
+import java.util.UUID;
+
 /**
  * Created by hannahkern on 28.02.18.
  */
 
 public class Calculator {
 
-    private String gas;
-    private String km;
-    private double ergebnis;
+    private UUID mId;
+    private Date mDate;
+    private String mGas;
+    private String mKm;
+    private String mErgebnis;
+
+    public Calculator(){
+        mId = UUID.randomUUID();
+        mDate = new Date();
+    }
+
+    public UUID getId() {
+        return mId;
+    }
+
+    public Date getDate() {
+        return mDate;
+    }
+
+    public void setDate(Date date) {
+        mDate = date;
+    }
 
     public String getGas() {
-        return gas;
+        return mGas;
     }
 
     public void setGas(String gas) {
-        this.gas = gas;
+        mGas = gas;
     }
 
     public String getKm() {
-        return km;
+        return mKm;
     }
 
     public void setKm(String km) {
-        this.km = km;
+        mKm = km;
     }
 
-    public double getErgebnis() {
-        return ergebnis;
+    public String getErgebnis() {
+        return mErgebnis;
     }
 
-    public void setErgebnis(double ergebnis) {
-        this.ergebnis = ergebnis;
+    public void setErgebnis(String ergebnis) {
+        mErgebnis = ergebnis;
     }
 
 }
