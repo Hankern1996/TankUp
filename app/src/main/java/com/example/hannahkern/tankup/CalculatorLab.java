@@ -24,10 +24,10 @@ public class CalculatorLab {
 
     private CalculatorLab (Context context) {
         mCalculators = new ArrayList<>();
-        for (int i = 0; i < 100; i++){
+        /*for (int i = 0; i < 100; i++){
             Calculator calculator = new Calculator();
             mCalculators.add(calculator);
-        }
+        }*/
     }
 
     public void addCalculator(Calculator c) {

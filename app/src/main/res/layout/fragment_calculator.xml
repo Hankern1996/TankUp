@@ -53,11 +53,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/result"/>
 
-    <Button
+    <!--Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/saveButton"
-        android:text="safe route"/>
+        android:text="safe route"/>-->
 
     <Button
         android:layout_width="match_parent"

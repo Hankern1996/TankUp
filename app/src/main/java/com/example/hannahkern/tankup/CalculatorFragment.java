@@ -116,6 +116,7 @@ public class CalculatorFragment extends Fragment{
             else {
             mKm = (EditText) v.findViewById(R.id.enter_distance) ;
             mKm.setText(item);
+            mCalculator.setKm(item);
             }
 
 
@@ -147,17 +148,13 @@ public class CalculatorFragment extends Fragment{
             }
         });
 
-        mSaveButton = (Button) v.findViewById(R.id.saveButton);
+        /*mSaveButton = (Button) v.findViewById(R.id.saveButton);
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calculator calculator = new Calculator();
-                CalculatorLab.get(getActivity()).addCalculator(calculator);
-                Intent intent = CalculatorPagerActivity
-                        .newIntent(getActivity(), calculator.getId());
-                startActivity(intent);
+                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
             }
-        });
+        });*/
 
 
         mSendButton = (Button) v.findViewById(R.id.sendButton);

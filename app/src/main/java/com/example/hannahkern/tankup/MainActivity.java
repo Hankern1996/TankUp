@@ -86,8 +86,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.calculator) {
 
-            Intent intent2 = new Intent(MainActivity.this, CalculatorPagerActivity.class);
-            MainActivity.this.startActivity(intent2);
+            Calculator calculator = new Calculator();
+            CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
+
+            Intent intent = CalculatorPagerActivity
+                    .newIntent(getApplicationContext(), calculator.getId());
+            startActivity(intent);
 
            /*CalculatorFragment calculatorFragment = new CalculatorFragment();
            getSupportFragmentManager().beginTransaction()

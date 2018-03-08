@@ -89,10 +89,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 // sendMessage();
 
-                Intent intent2 = new Intent(MapsActivity.this, CalculatorPagerActivity.class);
+                Calculator calculator = new Calculator();
+                CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
+
+                /*Intent intent = CalculatorPagerActivity
+                        .newIntent(getApplicationContext(), calculator.getId());
+                startActivity(intent);*/
+
+                Intent intent = CalculatorPagerActivity
+                        .newIntent(getApplicationContext(), calculator.getId());
+
+                //Intent intent2 = new Intent(MapsActivity.this, CalculatorPagerActivity.class);
                 String mData = mRoute.toString().substring(0,mRoute.length()-2);
-                intent2.putExtra("data",mData);
-                MapsActivity.this.startActivity(intent2);
+                intent.putExtra("data",mData);
+                MapsActivity.this.startActivity(intent);
 
 
 
