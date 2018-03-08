@@ -35,6 +35,8 @@ public class CalculatorFragment extends Fragment{
     private Calculator mCalculator;
 
     private EditText mGas;
+    private EditText mKm1;
+    private EditText mKm2;
     private EditText mKm;
     private TextView mResultText;
     private Button mDateButton;
@@ -60,8 +62,7 @@ public class CalculatorFragment extends Fragment{
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
 
-        item = getActivity().getIntent().getExtras().getString("data");
-        // b  = item.substring(0, item.length()-2);
+
 
     }
 
@@ -70,6 +71,8 @@ public class CalculatorFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
+
+
 
         // String strtext = getArguments().getString("edttext");
 
@@ -95,16 +98,29 @@ public class CalculatorFragment extends Fragment{
             }
         });
 
+            //item = getActivity().getIntent().getExtras().getString("data");
 
-        mKm = (EditText) v.findViewById(R.id.enter_distance);
+           // mKm1 = (EditText) v.findViewById(R.id.enter_distance);
+          //  mKm1.setText(getActivity().getIntent().getExtras().getString("data"));
 
-        if(item != null){
-            mKm.setText(item);
+        try {
+            item = getActivity().getIntent().getExtras().getString("data");
+        } catch (NullPointerException e ) {
+            item = "";
         }
-        else {
 
+            if (item == "")
+            { mKm = (EditText) v.findViewById(R.id.enter_distance);
             mKm.setText(mCalculator.getKm());}
-        mKm.addTextChangedListener(new TextWatcher() {
+
+            else {
+            mKm = (EditText) v.findViewById(R.id.enter_distance) ;
+            mKm.setText(item);
+            }
+
+
+
+            mKm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // This space intentionally left blank
