@@ -30,9 +30,9 @@ public class CalculatorLab {
         }
     }
 
-    /*public void addCalculator(Calculator c) {
+    public void addCalculator(Calculator c) {
         mCalculators.add(c);
-    }*/
+    }
 
     public List<Calculator> getCalculators() {
         return mCalculators;

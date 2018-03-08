@@ -39,6 +39,7 @@ public class CalculatorFragment extends Fragment{
     private TextView mResultText;
     private Button mDateButton;
     private Button mCalculateButton;
+    private Button mSaveButton;
     private Button mSendButton;
 
     private String item;
@@ -129,6 +130,19 @@ public class CalculatorFragment extends Fragment{
                     calculate();
                 }
             });
+
+        mSaveButton = (Button) v.findViewById(R.id.saveButton);
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calculator calculator = new Calculator();
+                CalculatorLab.get(getActivity()).addCalculator(calculator);
+                Intent intent = CalculatorPagerActivity
+                        .newIntent(getActivity(), calculator.getId());
+                startActivity(intent);
+            }
+        });
+
 
         mSendButton = (Button) v.findViewById(R.id.sendButton);
         mSendButton.setOnClickListener(new View.OnClickListener() {
