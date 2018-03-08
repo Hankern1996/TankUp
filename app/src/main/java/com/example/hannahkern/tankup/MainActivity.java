@@ -89,22 +89,22 @@ public class MainActivity extends AppCompatActivity
             Intent intent2 = new Intent(MainActivity.this, CalculatorPagerActivity.class);
             MainActivity.this.startActivity(intent2);
 
-            /*CalculatorFragment calculatorFragment = new CalculatorFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame,calculatorFragment)
-                    .addToBackStack(null)
-                    .commit();*/
+           /*CalculatorFragment calculatorFragment = new CalculatorFragment();
+           getSupportFragmentManager().beginTransaction()
+                   .replace(R.id.content_frame,calculatorFragment)
+                   .addToBackStack(null)
+                   .commit();*/
 
         } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
             MainActivity.this.startActivity(intent1);
 
-            /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame, mMapFragment)
-                    .addToBackStack(null)
-                    .commit();*/
+           /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
+           getSupportFragmentManager().beginTransaction()
+                   .replace(R.id.content_frame, mMapFragment)
+                   .addToBackStack(null)
+                   .commit();*/
 
         } else if (id == R.id.nav_share) {
 

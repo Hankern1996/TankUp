@@ -60,7 +60,7 @@ public class CalculatorFragment extends Fragment{
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
 
-        //item = getActivity().getIntent().getExtras().getString("data");
+        item = getActivity().getIntent().getExtras().getString("data");
         // b  = item.substring(0, item.length()-2);
 
     }
@@ -71,10 +71,10 @@ public class CalculatorFragment extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
-       // String strtext = getArguments().getString("edttext");
+        // String strtext = getArguments().getString("edttext");
 
         //MapsActivity activity = (MapsActivity) getActivity();
-       // String myDataFromActivity = activity.sendMessage();
+        // String myDataFromActivity = activity.sendMessage();
 
         mGas = (EditText) v.findViewById(R.id.enter_price);
         mGas.setText(mCalculator.getGas());
@@ -103,7 +103,7 @@ public class CalculatorFragment extends Fragment{
         }
         else {
 
-        mKm.setText(mCalculator.getKm());}
+            mKm.setText(mCalculator.getKm());}
         mKm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -127,9 +127,9 @@ public class CalculatorFragment extends Fragment{
         mCalculateButton = (Button) v.findViewById(R.id.calculateButton);
         mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    calculate();
-                }
-            });
+                calculate();
+            }
+        });
 
         mSaveButton = (Button) v.findViewById(R.id.saveButton);
         mSaveButton.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +172,7 @@ public class CalculatorFragment extends Fragment{
 
         return v;
 
-        }
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -193,31 +193,31 @@ public class CalculatorFragment extends Fragment{
     }
 
     private void calculate()throws NumberFormatException{
-            // Gets the two EditText controls' Editable values
-            Editable editableGas = mGas.getText(),
-                    editableKm = mKm.getText();
+        // Gets the two EditText controls' Editable values
+        Editable editableGas = mGas.getText(),
+                editableKm = mKm.getText();
 
-            // Initializes the double values and result
-            double value1 = 0.0,
-                    value2 = 0.0,
-                    result;
+        // Initializes the double values and result
+        double value1 = 0.0,
+                value2 = 0.0,
+                result;
 
-            // If the Editable values are not null, obtains their double values by parsing
-            if (editableGas != null)
-                value1 = Double.parseDouble(editableGas.toString());
+        // If the Editable values are not null, obtains their double values by parsing
+        if (editableGas != null)
+            value1 = Double.parseDouble(editableGas.toString());
 
-            if (editableKm != null)
+        if (editableKm != null)
 
-                value2 = Double.parseDouble(editableKm.toString());
+            value2 = Double.parseDouble(editableKm.toString());
 
 
-            // Calculates the result
-            result = value1 * value2;
+        // Calculates the result
+        result = value1 * value2;
 
-            // Displays the calculated result
-            mResultText.setText(String.valueOf(result));
-            mCalculator.setErgebnis(String.valueOf(result));
-        }
+        // Displays the calculated result
+        mResultText.setText(String.valueOf(result));
+        mCalculator.setErgebnis(String.valueOf(result));
+    }
 
     private String getMessage() {
 
@@ -230,5 +230,3 @@ public class CalculatorFragment extends Fragment{
     }
 
 }
-
-
