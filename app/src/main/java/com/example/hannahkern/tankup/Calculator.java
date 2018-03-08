@@ -13,10 +13,15 @@ public class Calculator {
     private Date mDate;
     private String mGas;
     private String mKm;
+    private String mPassenger;
     private String mErgebnis;
 
     public Calculator(){
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+
+    public Calculator(UUID id) {
+        mId = id;
         mDate = new Date();
     }
 
@@ -46,6 +51,14 @@ public class Calculator {
 
     public void setKm(String km) {
         mKm = km;
+    }
+
+    public String getPassenger() {
+        return mPassenger;
+    }
+
+    public void setPassenger(String passenger) {
+        mPassenger = passenger;
     }
 
     public String getErgebnis() {

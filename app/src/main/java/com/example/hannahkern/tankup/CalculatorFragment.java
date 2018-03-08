@@ -35,13 +35,11 @@ public class CalculatorFragment extends Fragment{
     private Calculator mCalculator;
 
     private EditText mGas;
-    private EditText mKm1;
-    private EditText mKm2;
     private EditText mKm;
+    private EditText mPassenger;
     private TextView mResultText;
     private Button mDateButton;
     private Button mCalculateButton;
-    private Button mSaveButton;
     private Button mSendButton;
 
     private String item;
@@ -61,9 +59,14 @@ public class CalculatorFragment extends Fragment{
 
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
-
+        CalculatorLab.get(getActivity())
+                .updateCalculator(mCalculator);
     }
 
     @Nullable
@@ -138,6 +141,25 @@ public class CalculatorFragment extends Fragment{
             }
         });
 
+        mPassenger = (EditText) v.findViewById(R.id.enter_passenger);
+        mPassenger.setText(mCalculator.getPassenger());
+        mPassenger.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mCalculator.setPassenger(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This one too
+            }
+        });
+
         mResultText = (TextView) v.findViewById(R.id.result);
         mResultText.setText((CharSequence) mCalculator.getErgebnis());
 
@@ -208,11 +230,13 @@ public class CalculatorFragment extends Fragment{
     private void calculate()throws NumberFormatException{
         // Gets the two EditText controls' Editable values
         Editable editableGas = mGas.getText(),
-                editableKm = mKm.getText();
+                editableKm = mKm.getText(),
+                editablePassenger = mPassenger.getText();
 
         // Initializes the double values and result
         double value1 = 0.0,
                 value2 = 0.0,
+                value3= 0.0,
                 result;
 
         // If the Editable values are not null, obtains their double values by parsing
@@ -220,12 +244,13 @@ public class CalculatorFragment extends Fragment{
             value1 = Double.parseDouble(editableGas.toString());
 
         if (editableKm != null)
-
             value2 = Double.parseDouble(editableKm.toString());
 
+        if (editablePassenger != null)
+            value3 = Double.parseDouble(editablePassenger.toString());
 
         // Calculates the result
-        result = value1 * value2;
+        result = value1 * value2 / value3;
 
         // Displays the calculated result
         mResultText.setText(String.valueOf(result));

@@ -64,6 +64,7 @@ public class CalculatorListFragment extends Fragment {
             mAdapter = new CalculatorAdapter(calculators);
             mCalculatorRecyclerView.setAdapter(mAdapter);
         } else {
+            mAdapter.setCalculators(calculators);
             mAdapter.notifyDataSetChanged();
         }
     }
@@ -119,6 +120,10 @@ public class CalculatorListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mCalculators.size();
+        }
+
+        public void setCalculators(List<Calculator> calculators) {
+            mCalculators = calculators;
         }
     }
 }
