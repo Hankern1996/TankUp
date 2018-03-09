@@ -41,7 +41,14 @@
 
 
         <activity android:name=".CalculatorListActivity"/>
-        <activity android:name=".CalculatorPagerActivity" android:parentActivityName=".CalculatorListActivity"></activity>
+        <activity android:name=".CalculatorPagerActivity"
+            android:label="Calculator"
+
+            android:theme="@style/AppTheme.NoActionBar"
+
+            >
+
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
