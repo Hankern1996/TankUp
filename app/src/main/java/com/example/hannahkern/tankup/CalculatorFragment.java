@@ -40,6 +40,7 @@ public class CalculatorFragment extends Fragment{
     private TextView mResultText;
     private Button mDateButton;
     private Button mCalculateButton;
+    private Button mDeleteButton;
     private Button mSendButton;
 
     private String item;
@@ -170,13 +171,14 @@ public class CalculatorFragment extends Fragment{
             }
         });
 
-        /*mSaveButton = (Button) v.findViewById(R.id.saveButton);
-        mSaveButton.setOnClickListener(new View.OnClickListener() {
+        mDeleteButton = (Button) v.findViewById(R.id.deleteButton);
+        mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
+                CalculatorLab.get(getActivity()).deleteCalculator(mCalculator);
+                getActivity().finish();
             }
-        });*/
+        });
 
 
         mSendButton = (Button) v.findViewById(R.id.sendButton);

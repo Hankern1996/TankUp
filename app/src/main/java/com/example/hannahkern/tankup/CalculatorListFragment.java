@@ -80,13 +80,11 @@ public class CalculatorListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             mDateTextView = (TextView) itemView.findViewById(R.id.calculator_date);
-            mKmTextView = (TextView) itemView.findViewById(R.id.calculator_price);
         }
 
         public void bind(Calculator calculator) {
             mCalculator = calculator;
             mDateTextView.setText(mCalculator.getDate().toString());
-            mKmTextView.setText(mCalculator.getKm());
         }
 
         @Override

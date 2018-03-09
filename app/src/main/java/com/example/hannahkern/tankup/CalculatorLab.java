@@ -46,6 +46,22 @@ public class CalculatorLab {
         mDatabase.insert(CalculatorDbSchema.CalculatorTable.NAME, null, values);
     }
 
+    public void deleteCalculator (Calculator c){
+
+
+
+        /*mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, null, new String[] { String.valueOf(values) });
+        mDatabase.close();*/
+
+        String uuidString = c.getId().toString();
+        ContentValues values = getContentValues(c);
+
+        mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, CalculatorDbSchema.CalculatorTable.Cols.UUID+ " = ?",
+                new String[] { String.valueOf(uuidString) });
+
+
+    }
+
     public List<Calculator> getCalculators() {
         List<Calculator> calculators = new ArrayList<>();
 
