@@ -156,7 +156,7 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
         } else if (id == R.id.nav_trips) {
             CalculatorListFragment calculatorFragment = new CalculatorListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame,calculatorFragment)
+                    .replace(R.id.calculator_view_pager,calculatorFragment)
                     .addToBackStack(null)
                     .commit();
         }

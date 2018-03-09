@@ -339,7 +339,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
         } else if (id == R.id.nav_trips) {
             CalculatorListFragment calculatorFragment = new CalculatorListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame,calculatorFragment)
+                    .replace(R.id.maps12,calculatorFragment)
                     .addToBackStack(null)
                     .commit();
         }
