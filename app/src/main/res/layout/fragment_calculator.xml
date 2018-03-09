@@ -42,6 +42,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/enter_price"/>
 
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passenger"
+        android:text="Enter number of passengers in the car:"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_passenger"/>
+
     <Button
         android:id="@+id/calculateButton"
         android:layout_width="match_parent"
