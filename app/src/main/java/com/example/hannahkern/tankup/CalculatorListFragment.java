@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,21 +43,6 @@ public class CalculatorListFragment extends Fragment {
         updateUI();
     }
 
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.new_calculator:
-                Calculator calculator = new Calculator();
-                CalculatorLab.get(getActivity()).addCalculator(calculator);
-                Intent intent = CalculatorPagerActivity
-                        .newIntent(getActivity(), calculator.getId());
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }*/
-
     private void updateUI() {
         CalculatorLab calculatorLab = CalculatorLab.get(getActivity());
         List<Calculator> calculators = calculatorLab.getCalculators();
@@ -72,7 +59,6 @@ public class CalculatorListFragment extends Fragment {
     private class CalculatorHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
 
         private Calculator mCalculator;
-        private TextView mKmTextView;
         private TextView mDateTextView;
 
         public CalculatorHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -84,7 +70,9 @@ public class CalculatorListFragment extends Fragment {
 
         public void bind(Calculator calculator) {
             mCalculator = calculator;
-            mDateTextView.setText(mCalculator.getDate().toString());
+            Date date = mCalculator.getDate();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+            mDateTextView.setText(simpleDateFormat.format(date));
         }
 
         @Override

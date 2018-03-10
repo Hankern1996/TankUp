@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.util.Date;
 import java.util.UUID;
 
@@ -226,7 +228,9 @@ public class CalculatorFragment extends Fragment{
     }
 
     private void updateDate() {
-        mDateButton.setText(mCalculator.getDate().toString());
+        Date date = mCalculator.getDate();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        mDateButton.setText(simpleDateFormat.format(date));
     }
 
     private void calculate()throws NumberFormatException{

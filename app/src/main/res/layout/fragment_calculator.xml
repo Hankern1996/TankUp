@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/calculator_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,34 +28,71 @@
         android:id="@+id/distance"
         android:text="Enter your distance in km:"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/enter_distance"/>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/price"
-        android:text="Enter gas price in Euros:"/>
+        <EditText
+            android:id="@+id/enter_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/enter_price"/>
+        <TextView
+            android:textSize="20dp"
+            android:id="@+id/Km"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="11dp"
+            android:text="Km"
+            app:layout_constraintStart_toEndOf="@id/enter_distance"/>
 
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/passenger"
-        android:text="Enter number of passengers in the car:"/>
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/enter_distance"
+            android:id="@+id/price"
+            android:text="Enter gas price in Euros:"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/enter_passenger"/>
+        <EditText
+            app:layout_constraintTop_toBottomOf="@id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enter_price"/>
+
+        <TextView
+            android:textSize="20dp"
+            android:id="@+id/Euro"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="88dp"
+            android:text="Euro"
+            app:layout_constraintStart_toEndOf="@id/enter_price"/>
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/passenger"
+            app:layout_constraintTop_toBottomOf="@id/enter_price"
+            android:text="Enter number of passengers in the car:"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enter_passenger"
+            app:layout_constraintTop_toBottomOf="@id/passenger"/>
+
+        <TextView
+            android:textSize="20dp"
+            android:id="@+id/Passengers"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="163dp"
+            android:text="Passengers"
+            app:layout_constraintStart_toEndOf="@id/enter_passenger"/>
+
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/calculateButton"
@@ -78,7 +116,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/sendButton"
         android:text="Send reminder"/>
-
 
 
 </LinearLayout>
