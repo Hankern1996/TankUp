@@ -126,9 +126,10 @@ public class CalculatorLab {
         values.put(CalculatorDbSchema.CalculatorTable.Cols.UUID, calculator.getId().toString());
         values.put(CalculatorDbSchema.CalculatorTable.Cols.DATE, calculator.getDate().getTime());
         values.put(CalculatorDbSchema.CalculatorTable.Cols.GAS, calculator.getGas());
-        values.put(CalculatorDbSchema.CalculatorTable.Cols.KM, calculator.getDate().toString());
+        values.put(CalculatorDbSchema.CalculatorTable.Cols.KM, calculator.getKm());
         values.put(CalculatorDbSchema.CalculatorTable.Cols.PASSENGER, calculator.getPassenger());
         values.put(CalculatorDbSchema.CalculatorTable.Cols.ERGEBNIS, calculator.getErgebnis());
+        values.put(CalculatorDbSchema.CalculatorTable.Cols.TITLE, calculator.getTitle());
 
         return values;
     }

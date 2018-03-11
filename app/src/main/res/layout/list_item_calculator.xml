@@ -7,13 +7,13 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/calculator_date"
+        android:id="@+id/calculator_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Date"
+        android:text="Title"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/ImageView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,8 +23,22 @@
         android:layout_marginRight="8dp"
         android:layout_marginLeft="16dp" />
 
+    <TextView
+        android:id="@+id/calculator_date"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_title"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp" />
+
     <ImageView
-        android:id="@+id/ad_money"
+        android:id="@+id/calculator_logo"
         android:layout_width="51dp"
         android:layout_height="52dp"
         android:layout_marginBottom="16dp"

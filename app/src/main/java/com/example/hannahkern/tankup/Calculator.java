@@ -11,6 +11,7 @@ public class Calculator {
 
     private UUID mId;
     private Date mDate;
+    private String mTitle;
     private String mGas;
     private String mKm;
     private String mPassenger;
@@ -35,6 +36,14 @@ public class Calculator {
 
     public void setDate(Date date) {
         mDate = date;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
     public String getGas() {

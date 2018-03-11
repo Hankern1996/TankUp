@@ -5,10 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.hannahkern.tankup.database.CalculatorDbSchema.CalculatorTable;
-import com.example.hannahkern.tankup.Calculator;
 
 /**
- * Created by pauli on 08.03.2018.
+ * Created by pauli on 11.03.2018.
  */
 
 public class CalculatorBaseHelper extends SQLiteOpenHelper {
@@ -29,12 +28,15 @@ public class CalculatorBaseHelper extends SQLiteOpenHelper {
                 CalculatorTable.Cols.GAS + ", " +
                 CalculatorTable.Cols.KM +  ", " +
                 CalculatorTable.Cols.PASSENGER + ", " +
-                CalculatorTable.Cols.ERGEBNIS +
+                CalculatorTable.Cols.ERGEBNIS + ", " +
+                CalculatorTable.Cols.TITLE +
                 ")");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }

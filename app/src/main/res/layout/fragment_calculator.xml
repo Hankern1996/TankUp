@@ -16,33 +16,52 @@
         android:layout_marginBottom="2dp"
         android:text="Calculator"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/date_button"/>
+        android:id="@+id/date_button"
+        android:text="Select a date for your trip"/>
 
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/distance"
-        android:text="Enter your distance in km:"/>
+    
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:listSeparatorTextViewStyle"
+            android:id="@+id/title"
+            android:text="Enter a title for your trip"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enter_title"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/enter_title"
+            android:id="@+id/distance"
+            android:text="Enter your distance in km:"/>
+
         <EditText
             android:id="@+id/enter_distance"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/distance"/>
 
         <TextView
             android:textSize="20dp"
             android:id="@+id/Km"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="120dp"
             android:text="Km"
             app:layout_constraintStart_toEndOf="@id/enter_distance"/>
 
@@ -65,7 +84,7 @@
             android:id="@+id/Euro"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="197dp"
             android:text="Euro"
             app:layout_constraintStart_toEndOf="@id/enter_price"/>
 
@@ -88,7 +107,7 @@
             android:id="@+id/Passengers"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="163dp"
+            android:layout_marginTop="273dp"
             android:text="Passengers"
             app:layout_constraintStart_toEndOf="@id/enter_passenger"/>
 
@@ -103,7 +122,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/result"/>
+        android:id="@+id/result"
+        android:textSize="20sp"/>
 
     <Button
         android:layout_width="match_parent"

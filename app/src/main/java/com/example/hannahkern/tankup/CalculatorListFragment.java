@@ -59,12 +59,14 @@ public class CalculatorListFragment extends Fragment {
     private class CalculatorHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
 
         private Calculator mCalculator;
+        private TextView mTitleTextView;
         private TextView mDateTextView;
 
         public CalculatorHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_calculator, parent, false));
             itemView.setOnClickListener(this);
 
+            mTitleTextView = (TextView) itemView.findViewById(R.id.calculator_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.calculator_date);
         }
 
@@ -73,6 +75,7 @@ public class CalculatorListFragment extends Fragment {
             Date date = mCalculator.getDate();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
             mDateTextView.setText(simpleDateFormat.format(date));
+            mTitleTextView.setText( mCalculator.getTitle());
         }
 
         @Override

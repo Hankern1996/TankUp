@@ -36,6 +36,7 @@ public class CalculatorFragment extends Fragment{
 
     private Calculator mCalculator;
 
+    private EditText mTitle;
     private EditText mGas;
     private EditText mKm;
     private EditText mPassenger;
@@ -84,6 +85,25 @@ public class CalculatorFragment extends Fragment{
 
         //MapsActivity activity = (MapsActivity) getActivity();
         // String myDataFromActivity = activity.sendMessage();
+
+        mTitle = (EditText) v.findViewById(R.id.enter_title);
+        mTitle.setText(mCalculator.getTitle());
+        mTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mCalculator.setTitle(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This one too
+            }
+        });
 
         mGas = (EditText) v.findViewById(R.id.enter_price);
         mGas.setText(mCalculator.getGas());
@@ -230,7 +250,7 @@ public class CalculatorFragment extends Fragment{
     private void updateDate() {
         Date date = mCalculator.getDate();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        mDateButton.setText(simpleDateFormat.format(date));
+        mDateButton.setText("Select a date for your trip: " + simpleDateFormat.format(date));
     }
 
     private void calculate()throws NumberFormatException{
