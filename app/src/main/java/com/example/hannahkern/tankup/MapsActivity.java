@@ -77,13 +77,10 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
 
     private Button changeView;
 
-
     @Override
     public int getLayoutResource() {
         return R.layout.activity_main2;
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,9 +113,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-
 
 
         btnFindPath = (Button) findViewById(R.id.btnFindPath);

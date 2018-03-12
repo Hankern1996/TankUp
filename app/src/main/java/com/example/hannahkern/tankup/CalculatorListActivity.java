@@ -17,12 +17,7 @@ import java.util.UUID;
  * Created by pauli on 07.03.2018.
  */
 
-public class CalculatorListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-
-
-
-
+public class CalculatorListActivity extends AppCompatActivity {
 
     public int getLayoutResource() {
 
@@ -34,13 +29,9 @@ public class CalculatorListActivity extends BaseActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         Fragment fragment = new CalculatorListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-
 
         if (getLayoutResource()== R.layout.activity_main2){
             transaction.replace(R.id.drawer_layout2,fragment);
@@ -50,22 +41,14 @@ public class CalculatorListActivity extends BaseActivity implements NavigationVi
             transaction.replace(R.id.drawer_layout3,fragment);
         }
 
-
         transaction.addToBackStack(null);
         transaction.commit(); //requires adapter
 
-
-
-
-
     }
-
-
 
     protected Fragment createFragment() {
         return new CalculatorListFragment();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

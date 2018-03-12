@@ -24,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 /**
  * Created by pauli on 07.03.2018.
  */
@@ -33,51 +35,39 @@ public class CalculatorListFragment extends Fragment {
     public CalculatorAdapter mAdapter;
     View view;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main4, container, false);
 
         final android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) view.findViewById(R.id.toolbar4);
-       // ((AppCompatActivity)getActivity()).getSupportActionBar();
+        // ((AppCompatActivity)getActivity()).getSupportActionBar();
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         toolbar.setNavigationIcon(R.drawable.auto);
-        toolbar.inflateMenu(R.menu.activity_main_drawer);
+        //toolbar.inflateMenu(R.menu.activity_main_drawer);
         setHasOptionsMenu(true);
 
 
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 
-
-
-
-
             @Override
             public void onClick(View v) {
-               DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout4);
-               drawer.openDrawer(Gravity.START);
+                /*DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout4);
+                drawer.openDrawer(Gravity.START);*/
 
+                Intent intent1 = new Intent(getActivity(), MainActivity.class);
+                String openNavigation = "Open navigation drawer";
+                intent1.putExtra(openNavigation, true);
+                startActivity(intent1);
 
+                //toolbar.inflateMenu(R.menu.activity_main_drawer);
 
-
-               //toolbar.inflateMenu(R.menu.activity_main_drawer);
-
-
-
-               //MenuInflater inflater1 = null;
-               //inflater1.inflate(R.menu.activity_main_drawer, menu);
-               //setHasOptionsMenu(true);
-
-
-
-
-                }
-
-
+                //MenuInflater inflater1 = null;
+                //inflater1.inflate(R.menu.activity_main_drawer, menu);
+                //setHasOptionsMenu(true);
+            }
         }
 
         );
