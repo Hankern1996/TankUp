@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_trips) {
             CalculatorListFragment calculatorFragment = new CalculatorListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame,calculatorFragment)
+                    .replace(R.id.drawer_layout,calculatorFragment)
                     .addToBackStack(null)
                     .commit();
         }
