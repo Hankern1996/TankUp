@@ -2,14 +2,23 @@ package com.example.hannahkern.tankup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,13 +29,58 @@ import java.util.List;
  */
 
 public class CalculatorListFragment extends Fragment {
-    private RecyclerView mCalculatorRecyclerView;
-    private CalculatorAdapter mAdapter;
+    public RecyclerView mCalculatorRecyclerView;
+    public CalculatorAdapter mAdapter;
+    View view;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_calculator_list, container, false);
+        View view = inflater.inflate(R.layout.activity_main4, container, false);
+
+        final android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) view.findViewById(R.id.toolbar4);
+       // ((AppCompatActivity)getActivity()).getSupportActionBar();
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.auto);
+        toolbar.inflateMenu(R.menu.activity_main_drawer);
+        setHasOptionsMenu(true);
+
+
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+            @Override
+            public void onClick(View v) {
+               DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout4);
+               drawer.openDrawer(Gravity.START);
+
+
+
+
+               //toolbar.inflateMenu(R.menu.activity_main_drawer);
+
+
+
+               //MenuInflater inflater1 = null;
+               //inflater1.inflate(R.menu.activity_main_drawer, menu);
+               //setHasOptionsMenu(true);
+
+
+
+
+                }
+
+
+        }
+
+        );
 
         mCalculatorRecyclerView = (RecyclerView) view
                 .findViewById(R.id.calculator_recycler_view);
@@ -36,6 +90,68 @@ public class CalculatorListFragment extends Fragment {
 
         return view;
     }
+
+    /*public void onCreateOptionsMenu( Menu menu, MenuInflater inflater){
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.activity_main_drawer, menu);
+    }*/
+
+    @SuppressWarnings("StatementWithEmptyBody")
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.calculator) {
+
+            Calculator calculator = new Calculator();
+            Intent intent = new Intent(getActivity(), CalculatorLab.class);
+
+            CalculatorLab.get(getActivity().getApplicationContext()).addCalculator(calculator);
+
+            Intent intent1 = CalculatorPagerActivity
+                    .newIntent(getActivity().getApplicationContext(), calculator.getId());
+            startActivity(intent1);
+
+           /*CalculatorFragment calculatorFragment = new CalculatorFragment();
+           getSupportFragmentManager().beginTransaction()
+                   .replace(R.id.content_frame,calculatorFragment)
+                   .addToBackStack(null)
+                   .commit();*/
+
+        } else if (id == R.id.nav_map) {
+
+            Intent myIntent = new Intent(getActivity(), MapsActivity.class);
+            getActivity().startActivity(myIntent);
+
+           /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
+           getSupportFragmentManager().beginTransaction()
+                   .replace(R.id.content_frame, mMapFragment)
+                   .addToBackStack(null)
+                   .commit();*/
+
+        } else if (id == R.id.nav_share) {
+            Intent myIntent = new Intent(getActivity(), CalculatorListActivity.class);
+            getActivity().startActivity(myIntent);
+
+        } else if (id == R.id.nav_trips) {
+           /* CalculatorListFragment calculatorFragment = new CalculatorListFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame,calculatorFragment)
+                    .addToBackStack(null)
+                    .commit();*/
+        }
+
+
+        DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout4);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
 
     @Override
     public void onResume() {
@@ -56,7 +172,7 @@ public class CalculatorListFragment extends Fragment {
         }
     }
 
-    private class CalculatorHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
+    public class CalculatorHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
 
         private Calculator mCalculator;
         private TextView mTitleTextView;
@@ -85,7 +201,7 @@ public class CalculatorListFragment extends Fragment {
         }
     }
 
-    private class CalculatorAdapter extends RecyclerView.Adapter<CalculatorHolder> {
+    public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorHolder> {
 
         private List<Calculator> mCalculators;
 

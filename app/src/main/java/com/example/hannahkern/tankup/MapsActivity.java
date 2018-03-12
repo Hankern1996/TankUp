@@ -63,7 +63,7 @@ import Modules.DirectionFinder;
 import Modules.DirectionFinderListener;
 import Modules.Route;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, DirectionFinderListener,  NavigationView.OnNavigationItemSelectedListener {
+public class MapsActivity extends BaseActivity implements OnMapReadyCallback, DirectionFinderListener,  NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleMap mMap;
     private Button btnFindPath;
@@ -78,18 +78,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button changeView;
 
 
+    @Override
+    public int getLayoutResource() {
+        return R.layout.activity_main2;
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main2);
+        //setContentView(R.layout.activity_main2);
 
 
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
 
@@ -102,7 +107,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view2);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);*/
 
 
 
@@ -285,7 +290,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
     }
- @Override
+ /*@Override
 public boolean onOptionsItemSelected(MenuItem item) {
     // Handle action bar item clicks here. The action bar will
     // automatically handle clicks on the Home/Up button, so long
@@ -299,11 +304,14 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
     return super.onOptionsItemSelected(item);
 }
+    MainActivity mActivity= new MainActivity();
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
+        mActivity.onNavigationItemSelected(item);
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -323,7 +331,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
                    .addToBackStack(null)
                    .commit();*/
 
-        } else if (id == R.id.nav_map) {
+       /* } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(MapsActivity.this, MapsActivity.class);
             MapsActivity.this.startActivity(intent1);
@@ -334,12 +342,12 @@ public boolean onOptionsItemSelected(MenuItem item) {
                    .addToBackStack(null)
                    .commit();*/
 
-        } else if (id == R.id.nav_share) {
+       /* } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_trips) {
             CalculatorListFragment calculatorFragment = new CalculatorListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.maps12,calculatorFragment)
+                    .replace(R.id.calculator_view_pager,calculatorFragment)
                     .addToBackStack(null)
                     .commit();
         }
@@ -367,7 +375,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
         } else {
             super.onBackPressed();
         }
-    }
+    }*/
 }
 
 

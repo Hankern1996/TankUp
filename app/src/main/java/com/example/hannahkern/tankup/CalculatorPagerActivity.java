@@ -23,7 +23,7 @@ import java.util.UUID;
  * Created by pauli on 07.03.2018.
  */
 
-public class CalculatorPagerActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
+public class CalculatorPagerActivity extends BaseActivity implements  NavigationView.OnNavigationItemSelectedListener {
     public static final String EXTRA_CALCULATOR_ID =
             "com.example.hannahkern.tankup.calculator_id";
 
@@ -43,14 +43,19 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
     }
 
     @Override
+    public int getLayoutResource() {
+        return R.layout.activity_main3;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        //setContentView(R.layout.activity_main3);
         //set view
 
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout3);
@@ -61,7 +66,7 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view3);
         navigationView.setNavigationItemSelectedListener(this);
-
+*/
 
         UUID calculatorId = (UUID) getIntent()
                 .getSerializableExtra(EXTRA_CALCULATOR_ID);
@@ -102,7 +107,7 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
 
 
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -140,7 +145,7 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
                    .addToBackStack(null)
                    .commit();*/
 
-        } else if (id == R.id.nav_map) {
+       /* } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(CalculatorPagerActivity.this, MapsActivity.class);
             CalculatorPagerActivity.this.startActivity(intent1);
@@ -151,7 +156,7 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
                    .addToBackStack(null)
                    .commit();*/
 
-        } else if (id == R.id.nav_share) {
+        /*} else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_trips) {
             CalculatorListFragment calculatorFragment = new CalculatorListFragment();
@@ -165,5 +170,5 @@ public class CalculatorPagerActivity extends AppCompatActivity implements  Navig
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout3);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+    }*/
 }

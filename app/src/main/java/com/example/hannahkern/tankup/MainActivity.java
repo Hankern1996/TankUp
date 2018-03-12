@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
 
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -108,6 +109,8 @@ public class MainActivity extends AppCompatActivity
                    .commit();*/
 
         } else if (id == R.id.nav_share) {
+            Intent intent1 = new Intent(MainActivity.this, CalculatorListActivity.class);
+            MainActivity.this.startActivity(intent1);
 
         } else if (id == R.id.nav_trips) {
             CalculatorListFragment calculatorFragment = new CalculatorListFragment();

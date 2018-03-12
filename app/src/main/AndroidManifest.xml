@@ -40,7 +40,6 @@
 
 
 
-        <activity android:name=".CalculatorListActivity"/>
         <activity android:name=".CalculatorPagerActivity"
             android:label="Calculator"
 
@@ -67,6 +66,13 @@
             android:theme="@style/AppTheme.NoActionBar"
 
         />
+        <activity
+            android:name=".CalculatorListActivity"
+            android:label="Last trips"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
+
     </application>
 
 </manifest>
