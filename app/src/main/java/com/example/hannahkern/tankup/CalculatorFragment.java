@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
@@ -271,13 +273,42 @@ public class CalculatorFragment extends Fragment{
 
         // If the Editable values are not null, obtains their double values by parsing
         if (editableGas != null)
-            value1 = Double.parseDouble(editableGas.toString());
+
+            try {
+                value1 = Double.parseDouble(editableGas.toString());
+            }
+            catch (NumberFormatException e) {
+                // Handle error here, perhaps notify the user to input some data
+                Toast.makeText(getActivity(),
+                        "Please enter a valid number", Toast.LENGTH_LONG).show();
+                mGas.requestFocus();
+                e.printStackTrace();
+            }
+
 
         if (editableKm != null)
-            value2 = Double.parseDouble(editableKm.toString());
+
+            try {
+                value2 = Double.parseDouble(editableKm.toString());
+            }
+            catch (NumberFormatException e) {
+                // Handle error here, perhaps notify the user to input some data
+                Toast.makeText(getActivity(),
+                        "Please enter a valid number", Toast.LENGTH_LONG).show();
+                mKm.requestFocus();
+                e.printStackTrace();}
 
         if (editablePassenger != null)
-            value3 = Double.parseDouble(editablePassenger.toString());
+
+            try {
+                value3 = Double.parseDouble(editablePassenger.toString());
+            }
+            catch (NumberFormatException e){
+                // Handle error here, perhaps notify the user to input some data
+                Toast.makeText(getActivity(),
+                        "Please enter a valid number", Toast.LENGTH_LONG).show();
+                mPassenger.requestFocus();
+                e.printStackTrace();}
 
         // Calculates the result
         result = value1 * value2 / value3;
