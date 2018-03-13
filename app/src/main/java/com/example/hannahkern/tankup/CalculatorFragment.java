@@ -3,6 +3,7 @@ package com.example.hannahkern.tankup;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,6 +29,8 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 
 
 import java.text.SimpleDateFormat;
@@ -121,6 +124,16 @@ public class CalculatorFragment extends Fragment {
                 // App code
             }
         });
+
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                .setQuote("Connect on a global scale.")
+                .build();
+
+        ShareButton shareButton = (ShareButton)v.findViewById(R.id.share_button);
+        shareButton.setShareContent(content);
+
+
 
 
         callbackManager = CallbackManager.Factory.create();
@@ -378,7 +391,6 @@ public class CalculatorFragment extends Fragment {
         mResultText.setText(String.valueOf(result));
         mCalculator.setErgebnis(String.valueOf(result));
     }
-
 
 
 

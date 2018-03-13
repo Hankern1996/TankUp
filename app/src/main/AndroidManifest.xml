@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo_icon"
@@ -18,6 +20,10 @@
         android:roundIcon="@mipmap/logo_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider{1947656478595570}"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
