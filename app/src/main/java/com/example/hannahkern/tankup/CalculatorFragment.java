@@ -29,7 +29,12 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.facebook.share.model.ShareContent;
+import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.widget.ShareButton;
 
 
@@ -125,13 +130,8 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-        ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentUrl(Uri.parse("https://developers.facebook.com"))
-                .setQuote("Connect on a global scale.")
-                .build();
 
-        ShareButton shareButton = (ShareButton)v.findViewById(R.id.share_button);
-        shareButton.setShareContent(content);
+
 
 
 
@@ -265,6 +265,7 @@ public class CalculatorFragment extends Fragment {
         mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 calculate();
+
             }
         });
 
@@ -303,6 +304,30 @@ public class CalculatorFragment extends Fragment {
                 dialog.show(manager, DIALOG_DATE);
             }
         });
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse("https://www.benzinpreis-aktuell.de"))
+                        .setQuote("Hey,I just planned my last trip with my friends on the New TankUp-App. Please check your Email, I sent you a payment notification!")
+                        .build();
+       /* ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
+                .putString("og:type", "post.post")
+                .putString("og:title", "Tankup - My last journey")
+                .putString("og:description", "This was my last journey: ")
+                //.putString("og:description")
+                .build();
+
+        ShareOpenGraphAction action = new ShareOpenGraphAction.Builder()
+                .setActionType("books.reads")
+                .putObject("book", object)
+                .build();
+
+        ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
+                .setPreviewPropertyName("book")
+                .setAction(action)
+                .build();*/
+
+
+        ShareButton shareButton = (ShareButton)v.findViewById(R.id.share_button);
+        shareButton.setShareContent(content);
 
         return v;
 
