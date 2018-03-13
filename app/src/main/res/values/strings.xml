@@ -15,9 +15,12 @@
     </string>
     <string name="send_message">Send message via:</string>
     <string name="date_picker_title">Date of trip:</string>
+
     <string name="facebook_app_id">1947656478595570</string>
     <string name="fb_login_protocol_scheme">fb1947656478595570</string>
 
 
+    <string name="maincontent_text1">Calculate your gas price and share costs with friends.</string>
+    <string name="maincontent_text2">Let\'s get started with <b> TankUp </b>!</string>
 
 </resources>
