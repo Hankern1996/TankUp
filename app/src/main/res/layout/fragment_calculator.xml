@@ -61,24 +61,48 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/enter_distance"
+            android:id="@+id/fuelConsumption"
+            android:text="Fuel consumption:"/>
+
+        <EditText
+            app:layout_constraintStart_toEndOf="@id/fuelConsumption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enter_fuelconsumption"
+            app:layout_constraintTop_toBottomOf="@+id/enter_distance" />
+
+        <TextView
+            android:textSize="20dp"
+            android:id="@+id/EuroperLiter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="l/100km"
+            app:layout_constraintStart_toEndOf="@id/enter_fuelconsumption"
+            app:layout_constraintTop_toBottomOf="@+id/enter_distance"/>
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/enter_fuelconsumption"
             android:id="@+id/price"
-            android:text="Gas price in Euros:"/>
+            android:text="Gas price per liter:"/>
 
         <EditText
             app:layout_constraintStart_toEndOf="@id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/enter_price"
-            app:layout_constraintTop_toBottomOf="@+id/enter_distance" />
+            app:layout_constraintTop_toBottomOf="@+id/enter_fuelconsumption" />
 
         <TextView
             android:textSize="20dp"
             android:id="@+id/Euro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="€"
+            android:text="€/l"
             app:layout_constraintStart_toEndOf="@id/enter_price"
-            app:layout_constraintTop_toBottomOf="@+id/enter_distance"/>
+            app:layout_constraintTop_toBottomOf="@+id/enter_fuelconsumption"/>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"

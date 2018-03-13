@@ -26,6 +26,7 @@ public class CalculatorBaseHelper extends SQLiteOpenHelper {
                 CalculatorTable.Cols.UUID + ", " +
                 CalculatorTable.Cols.DATE + ", " +
                 CalculatorTable.Cols.GAS + ", " +
+                CalculatorTable.Cols.CONSUMPTION + ", " +
                 CalculatorTable.Cols.KM +  ", " +
                 CalculatorTable.Cols.PASSENGER + ", " +
                 CalculatorTable.Cols.ERGEBNIS + ", " +

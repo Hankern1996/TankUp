@@ -58,6 +58,7 @@ public class CalculatorFragment extends Fragment {
     private Calculator mCalculator;
 
     private EditText mTitle;
+    private EditText mConsumption;
     private EditText mGas;
     private EditText mKm;
     private EditText mPassenger;
@@ -84,11 +85,6 @@ public class CalculatorFragment extends Fragment {
 
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
-
-
-
-
-
     }
 
     @Override
@@ -129,12 +125,6 @@ public class CalculatorFragment extends Fragment {
                 // App code
             }
         });
-
-
-
-
-
-
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -199,10 +189,29 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-            //item = getActivity().getIntent().getExtras().getString("data");
+        mConsumption = (EditText) v.findViewById(R.id.enter_fuelconsumption);
+        mConsumption.setText(mCalculator.getConsumption());
+        mConsumption.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
 
-           // mKm1 = (EditText) v.findViewById(R.id.enter_distance);
-          //  mKm1.setText(getActivity().getIntent().getExtras().getString("data"));
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mCalculator.setConsumption(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This one too
+            }
+        });
+
+        //item = getActivity().getIntent().getExtras().getString("data");
+
+        // mKm1 = (EditText) v.findViewById(R.id.enter_distance);
+        //  mKm1.setText(getActivity().getIntent().getExtras().getString("data"));
 
         try {
             item = getActivity().getIntent().getExtras().getString("data");
@@ -361,6 +370,7 @@ public class CalculatorFragment extends Fragment {
     private void calculate()throws NumberFormatException{
         // Gets the two EditText controls' Editable values
         Editable editableGas = mGas.getText(),
+                editableCosumption = mConsumption.getText(),
                 editableKm = mKm.getText(),
                 editablePassenger = mPassenger.getText();
 
@@ -368,6 +378,7 @@ public class CalculatorFragment extends Fragment {
         double value1 = 0.0,
                 value2 = 0.0,
                 value3= 0.0,
+                value4 = 0.0,
                 result;
 
         // If the Editable values are not null, obtains their double values by parsing
@@ -384,23 +395,35 @@ public class CalculatorFragment extends Fragment {
                 e.printStackTrace();
             }
 
+        if (editableCosumption != null)
+
+            try {
+                value2 = Double.parseDouble(editableCosumption.toString());
+            }
+            catch (NumberFormatException e){
+                Toast.makeText(getActivity(),
+                        "Please enter a valid number", Toast.LENGTH_LONG).show();
+                mConsumption.requestFocus();
+                e.printStackTrace();
+            }
 
         if (editableKm != null)
 
             try {
-                value2 = Double.parseDouble(editableKm.toString());
+                value3 = Double.parseDouble(editableKm.toString());
             }
             catch (NumberFormatException e) {
                 // Handle error here, perhaps notify the user to input some data
                 Toast.makeText(getActivity(),
                         "Please enter a valid number", Toast.LENGTH_LONG).show();
                 mKm.requestFocus();
-                e.printStackTrace();}
+                e.printStackTrace();
+            }
 
         if (editablePassenger != null)
 
             try {
-                value3 = Double.parseDouble(editablePassenger.toString());
+                value4 = Double.parseDouble(editablePassenger.toString());
             }
             catch (NumberFormatException e){
                 // Handle error here, perhaps notify the user to input some data
@@ -410,7 +433,7 @@ public class CalculatorFragment extends Fragment {
                 e.printStackTrace();}
 
         // Calculates the result
-        result = value1 * value2 / value3;
+        result = (value2 * value3 * value1) / (100 * value4);
 
         // Displays the calculated result
         mResultText.setText(String.valueOf(result));

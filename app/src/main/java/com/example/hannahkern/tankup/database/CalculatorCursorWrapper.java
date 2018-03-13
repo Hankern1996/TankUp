@@ -21,6 +21,7 @@ public class CalculatorCursorWrapper extends CursorWrapper {
         String uuidString = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.UUID));
         long date = getLong(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.DATE));
         String gas = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.GAS));
+        String consumption = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.CONSUMPTION));
         String km = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.KM));
         String passenger = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.PASSENGER));
         String ergebnis = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.ERGEBNIS));
@@ -29,6 +30,7 @@ public class CalculatorCursorWrapper extends CursorWrapper {
         Calculator calculator = new Calculator(UUID.fromString(uuidString));
         calculator.setDate(new Date(date));
         calculator.setGas(gas);
+        calculator.setConsumption(consumption);
         calculator.setKm(km);
         calculator.setPassenger(passenger);
         calculator.setErgebnis(ergebnis);
