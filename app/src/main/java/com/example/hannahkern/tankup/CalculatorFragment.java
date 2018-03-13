@@ -215,6 +215,7 @@ public class CalculatorFragment extends Fragment {
 
         try {
             item = getActivity().getIntent().getExtras().getString("data");
+
         } catch (NullPointerException e ) {
             item = "";
         }
@@ -225,8 +226,9 @@ public class CalculatorFragment extends Fragment {
 
             else {
             mKm = (EditText) v.findViewById(R.id.enter_distance) ;
-            mKm.setText(item);
             mCalculator.setKm(item);
+            mKm.setText(mCalculator.getKm());
+
             }
 
 

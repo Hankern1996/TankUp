@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +45,25 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        TextView mText = (TextView)findViewById(R.id.text4);
+        mText.setClickable(true);
+        mText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Calculator calculator = new Calculator();
+                CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
+
+                Intent intent = CalculatorPagerActivity
+                        .newIntent(getApplicationContext(), calculator.getId());
+                startActivity(intent);
+
+            }
+        });
+
+
+
 
     }
 
