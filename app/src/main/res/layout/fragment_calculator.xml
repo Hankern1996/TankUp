@@ -7,109 +7,102 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
-    <TextView
-        style="?android:listViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:text="Calculator"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/date_button"
         android:text="Select a date for your trip"/>
 
-    
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/constraint1">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             style="?android:listSeparatorTextViewStyle"
             android:id="@+id/title"
-            android:text="Enter a title for your trip"/>
+            android:text="Title for your trip:"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLength="25"
             android:id="@+id/enter_title"
-            app:layout_constraintTop_toBottomOf="@id/title"/>
+            app:layout_constraintStart_toEndOf="@id/title"/>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/enter_title"
             android:id="@+id/distance"
-            android:text="Enter your distance in km:"/>
+            android:text="Distance in km:"/>
 
         <EditText
             android:id="@+id/enter_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/distance"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_title"
+            app:layout_constraintStart_toEndOf="@id/distance"/>
 
         <TextView
             android:textSize="20dp"
             android:id="@+id/Km"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="120dp"
+            android:layout_height="wrap_content"
             android:text="Km"
-            app:layout_constraintStart_toEndOf="@id/enter_distance"/>
+            app:layout_constraintStart_toEndOf="@id/enter_distance"
+            app:layout_constraintTop_toBottomOf="@+id/enter_title"/>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/enter_distance"
             android:id="@+id/price"
-            android:text="Enter gas price in Euros:"/>
+            android:text="Gas price in Euros:"/>
 
         <EditText
-            app:layout_constraintTop_toBottomOf="@id/price"
+            app:layout_constraintStart_toEndOf="@id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/enter_price"/>
+            android:id="@+id/enter_price"
+            app:layout_constraintTop_toBottomOf="@+id/enter_distance" />
 
         <TextView
             android:textSize="20dp"
             android:id="@+id/Euro"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="197dp"
-            android:text="Euro"
-            app:layout_constraintStart_toEndOf="@id/enter_price"/>
+            android:layout_height="wrap_content"
+            android:text="€"
+            app:layout_constraintStart_toEndOf="@id/enter_price"
+            app:layout_constraintTop_toBottomOf="@+id/enter_distance"/>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:id="@+id/passenger"
             app:layout_constraintTop_toBottomOf="@id/enter_price"
-            android:text="Enter number of passengers in the car:"/>
+            android:text="Number of passengers:"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/enter_passenger"
-            app:layout_constraintTop_toBottomOf="@id/passenger"/>
+            app:layout_constraintStart_toEndOf="@id/passenger"
+            app:layout_constraintTop_toBottomOf="@id/enter_price"/>
 
         <TextView
             android:textSize="20dp"
             android:id="@+id/Passengers"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="273dp"
+            android:layout_height="wrap_content"
             android:text="Passengers"
-            app:layout_constraintStart_toEndOf="@id/enter_passenger"/>
+            app:layout_constraintStart_toEndOf="@id/enter_passenger"
+            app:layout_constraintTop_toBottomOf="@id/enter_price"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -119,39 +112,72 @@
         android:layout_height="wrap_content"
         android:text="Calculate" />
 
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/result"
-        android:textSize="20sp"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/gasprice"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Gasprice per person:" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/result"
+            android:textSize="20sp"
+            android:minWidth="20dp"
+            app:layout_constraintStart_toEndOf="@id/gasprice"/>
+
+        <TextView
+            android:textSize="20dp"
+            android:id="@+id/EuroPerPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="€/Person"
+            app:layout_constraintStart_toEndOf="@id/result" />
+
+        <TextView
+            android:id="@+id/share"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Share with friends:"
+            app:layout_constraintTop_toBottomOf="@id/gasprice" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/gasprice"
+            app:layout_constraintTop_toBottomOf="@id/gasprice"/>
+
+        <com.facebook.share.widget.ShareButton
+            android:id="@+id/share_button"
+            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            app:layout_constraintStart_toEndOf="@id/gasprice"
+            app:layout_constraintTop_toBottomOf="@id/login_button"/>
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendButton"
+            android:text="Send reminder"
+            app:layout_constraintStart_toEndOf="@id/gasprice"
+            app:layout_constraintTop_toBottomOf="@id/share_button"/>
+
+    </android.support.constraint.ConstraintLayout>
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/deleteButton"
         android:text="delete route"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-         />
-    <com.facebook.share.widget.ShareButton
-        android:id="@+id/share_button"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_gravity="center_horizontal"
-        />
-    </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sendButton"
-        android:text="Send reminder"/>
-
 
 </LinearLayout>
