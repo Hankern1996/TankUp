@@ -15,5 +15,9 @@
     </string>
     <string name="send_message">Send message via:</string>
     <string name="date_picker_title">Date of trip:</string>
+    <string name="facebook_app_id">1947656478595570</string>
+    <string name="fb_login_protocol_scheme">fb1947656478595570</string>
+
+
 
 </resources>

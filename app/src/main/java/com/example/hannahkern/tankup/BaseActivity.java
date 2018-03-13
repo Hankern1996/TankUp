@@ -13,11 +13,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
+import com.facebook.CallbackManager;
+
 /**
  * Created by hannahkern on 10.03.18.
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+
+
 
     android.support.v7.widget.Toolbar toolbar;
     int drawerLayout = 0;

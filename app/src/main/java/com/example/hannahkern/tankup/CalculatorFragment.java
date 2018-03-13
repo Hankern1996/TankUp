@@ -20,9 +20,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
-
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 
 import java.text.SimpleDateFormat;
@@ -34,9 +39,11 @@ import java.util.UUID;
  * Created by hannahkern on 28.02.18.
  */
 
-public class CalculatorFragment extends Fragment{
+public class CalculatorFragment extends Fragment {
     private static final String ARG_CALCULATOR_ID = "calculator_id";
     private static final String DIALOG_DATE = "DialogDate";
+
+    CallbackManager callbackManager;
 
     private static final int REQUEST_DATE = 0;
 
@@ -69,6 +76,11 @@ public class CalculatorFragment extends Fragment{
 
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
+
+
+
+
+
     }
 
     @Override
@@ -85,7 +97,51 @@ public class CalculatorFragment extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
 
+        callbackManager= CallbackManager.Factory.create();
 
+        LoginButton loginButton = (LoginButton) v.findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email");
+        // If using in a fragment
+        loginButton.setFragment(this);
+
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
+
+
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        // App code
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
 
         // String strtext = getArguments().getString("edttext");
 
@@ -241,6 +297,11 @@ public class CalculatorFragment extends Fragment{
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+        
+        
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
@@ -317,6 +378,13 @@ public class CalculatorFragment extends Fragment{
         mResultText.setText(String.valueOf(result));
         mCalculator.setErgebnis(String.valueOf(result));
     }
+
+
+
+
+
+
+
 
     private String getMessage() {
 
