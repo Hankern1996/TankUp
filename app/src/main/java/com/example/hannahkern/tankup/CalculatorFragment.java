@@ -315,7 +315,7 @@ public class CalculatorFragment extends Fragment {
         });
         ShareLinkContent content = new ShareLinkContent.Builder()
                         .setContentUrl(Uri.parse("https://www.benzinpreis-aktuell.de"))
-                        .setQuote("Hey,I just planned my last trip with my friends on the New TankUp-App. Please check your Email, I sent you a payment notification!")
+                        .setQuote("Hey, I just planned my last trip with my friends on the New TankUp-App. Please check your Email, I sent you a payment notification!")
                         .build();
        /* ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
                 .putString("og:type", "post.post")
