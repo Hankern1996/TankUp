@@ -167,6 +167,8 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:id="@+id/sendButton"
+            android:background="#3B5998"
+            android:textColor="#FFFFFF"
             android:text="Send reminder"
             app:layout_constraintStart_toEndOf="@id/gasprice"
             app:layout_constraintTop_toBottomOf="@id/share_button"/>
