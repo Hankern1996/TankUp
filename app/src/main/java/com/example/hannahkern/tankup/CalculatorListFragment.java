@@ -1,5 +1,6 @@
 package com.example.hannahkern.tankup;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuPresenter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -35,6 +38,7 @@ public class CalculatorListFragment extends Fragment {
     public CalculatorAdapter mAdapter;
     View view;
 
+    @SuppressLint("RestrictedApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,13 +48,14 @@ public class CalculatorListFragment extends Fragment {
         // ((AppCompatActivity)getActivity()).getSupportActionBar();
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.auto);
-        //toolbar.inflateMenu(R.menu.activity_main_drawer);
+       // toolbar.setNavigationIcon(R.drawable.test);
+        toolbar.inflateMenu(R.menu.activity_main_drawer);
         setHasOptionsMenu(true);
 
 
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
 
                                                  @Override
                                                  public void onClick(View v) {
