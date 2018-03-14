@@ -52,6 +52,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             navView = R.id.nav_view4;
         }
 
+        else if (getLayoutResource() == R.layout.activity_main5){
+            drawerLayout= R.id.drawer_layout5;
+            navView = R.id.nav_view5;
+        }
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(drawerLayout);
@@ -81,6 +86,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         else if (getLayoutResource() == R.layout.activity_main4){
             mToolbar = R.id.toolbar4;
+        }
+
+        else if (getLayoutResource()== R.layout.activity_main5){
+            mToolbar = R.id.toolbar5;
         }
 
         toolbar = (android.support.v7.widget.Toolbar) findViewById(mToolbar);
@@ -148,6 +157,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                    .commit();*/
 
         } else if (id == R.id.nav_share) {
+
+            Intent intent1 = new Intent(BaseActivity.this, BlogActivity.class);
+            BaseActivity.this.startActivity(intent1);
 
 
         } else if (id == R.id.nav_trips) {
@@ -219,6 +231,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         else if (getLayoutResource() == R.layout.activity_main4){
             drawerLayout = R.id.drawer_layout4;
         }
+        else if (getLayoutResource()== R.layout.activity_main5){
+            drawerLayout = R.id.drawer_layout5;
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(drawerLayout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
