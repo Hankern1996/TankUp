@@ -187,6 +187,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                         .commit();
 
             }
+            else if (getLayoutResource() == R.layout.activity_main5){
+                CalculatorListFragment calculatorFragment = new CalculatorListFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.drawer_layout5,calculatorFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+            }
 
 
         }
