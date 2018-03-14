@@ -174,7 +174,6 @@ public class CalculatorFragment extends Fragment {
 
         mMapskm.setText(item);
 
-
         mTitle = (EditText) v.findViewById(R.id.enter_title);
         mTitle.setText(mCalculator.getTitle());
         mTitle.addTextChangedListener(new TextWatcher() {
