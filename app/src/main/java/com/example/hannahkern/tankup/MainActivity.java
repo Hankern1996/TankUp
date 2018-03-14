@@ -110,7 +110,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.calculator) {
+        if (id == R.id.main){
+            Intent intent1 = new Intent(MainActivity.this, MainActivity.class);
+            MainActivity.this.startActivity(intent1);
+        }
+
+        else if (id == R.id.calculaterr) {
 
             Calculator calculator = new Calculator();
             CalculatorLab.get(getApplicationContext()).addCalculator(calculator);

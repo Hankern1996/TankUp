@@ -95,7 +95,7 @@ public class CalculatorListFragment extends Fragment {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.calculator) {
+        if (id == R.id.calculaterr) {
 
             Calculator calculator = new Calculator();
             Intent intent = new Intent(getActivity(), CalculatorLab.class);
