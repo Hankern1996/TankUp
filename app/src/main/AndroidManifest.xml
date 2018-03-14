@@ -102,7 +102,7 @@
 
         <activity
             android:name=".BlogActivity"
-            android:label="Blog"
+            android:label="Newsticker"
             android:theme="@style/AppTheme.NoActionBar"
             />
 
