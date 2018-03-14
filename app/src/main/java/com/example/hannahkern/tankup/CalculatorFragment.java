@@ -36,6 +36,7 @@ import com.facebook.share.model.ShareOpenGraphAction;
 import com.facebook.share.model.ShareOpenGraphContent;
 import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
 
 
 import java.text.SimpleDateFormat;
@@ -339,6 +340,8 @@ public class CalculatorFragment extends Fragment {
 
         ShareButton shareButton = (ShareButton)v.findViewById(R.id.share_button);
         shareButton.setShareContent(content);
+
+
 
         return v;
 

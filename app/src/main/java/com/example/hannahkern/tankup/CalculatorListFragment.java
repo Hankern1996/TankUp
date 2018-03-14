@@ -52,23 +52,23 @@ public class CalculatorListFragment extends Fragment {
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                /*DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout4);
-                drawer.openDrawer(Gravity.START);*/
+                                                 @Override
+                                                 public void onClick(View v) {
+               /*DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout4);
+               drawer.openDrawer(Gravity.START);*/
 
-                Intent intent1 = new Intent(getActivity(), MainActivity.class);
-                String openNavigation = "Open navigation drawer";
-                intent1.putExtra(openNavigation, true);
-                startActivity(intent1);
+                                                     Intent intent1 = new Intent(getActivity(), MainActivity.class);
+                                                     String openNavigation = "Open navigation drawer";
+                                                     intent1.putExtra(openNavigation, true);
+                                                     startActivity(intent1);
 
-                //toolbar.inflateMenu(R.menu.activity_main_drawer);
+                                                     //toolbar.inflateMenu(R.menu.activity_main_drawer);
 
-                //MenuInflater inflater1 = null;
-                //inflater1.inflate(R.menu.activity_main_drawer, menu);
-                //setHasOptionsMenu(true);
-            }
-        }
+                                                     //MenuInflater inflater1 = null;
+                                                     //inflater1.inflate(R.menu.activity_main_drawer, menu);
+                                                     //setHasOptionsMenu(true);
+                                                 }
+                                             }
 
         );
 
@@ -81,10 +81,10 @@ public class CalculatorListFragment extends Fragment {
         return view;
     }
 
-    /*public void onCreateOptionsMenu( Menu menu, MenuInflater inflater){
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.activity_main_drawer, menu);
-    }*/
+   /*public void onCreateOptionsMenu( Menu menu, MenuInflater inflater){
+       super.onCreateOptionsMenu(menu, inflater);
+       inflater.inflate(R.menu.activity_main_drawer, menu);
+   }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
 
@@ -106,33 +106,33 @@ public class CalculatorListFragment extends Fragment {
                     .newIntent(getActivity().getApplicationContext(), calculator.getId());
             startActivity(intent1);
 
-           /*CalculatorFragment calculatorFragment = new CalculatorFragment();
-           getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.content_frame,calculatorFragment)
-                   .addToBackStack(null)
-                   .commit();*/
+          /*CalculatorFragment calculatorFragment = new CalculatorFragment();
+          getSupportFragmentManager().beginTransaction()
+                  .replace(R.id.content_frame,calculatorFragment)
+                  .addToBackStack(null)
+                  .commit();*/
 
         } else if (id == R.id.nav_map) {
 
             Intent myIntent = new Intent(getActivity(), MapsActivity.class);
             getActivity().startActivity(myIntent);
 
-           /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
-           getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.content_frame, mMapFragment)
-                   .addToBackStack(null)
-                   .commit();*/
+          /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
+          getSupportFragmentManager().beginTransaction()
+                  .replace(R.id.content_frame, mMapFragment)
+                  .addToBackStack(null)
+                  .commit();*/
 
         } else if (id == R.id.nav_share) {
             Intent myIntent = new Intent(getActivity(), CalculatorListActivity.class);
             getActivity().startActivity(myIntent);
 
         } else if (id == R.id.nav_trips) {
-           /* CalculatorListFragment calculatorFragment = new CalculatorListFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame,calculatorFragment)
-                    .addToBackStack(null)
-                    .commit();*/
+          /* CalculatorListFragment calculatorFragment = new CalculatorListFragment();
+           getSupportFragmentManager().beginTransaction()
+                   .replace(R.id.content_frame,calculatorFragment)
+                   .addToBackStack(null)
+                   .commit();*/
         }
 
 

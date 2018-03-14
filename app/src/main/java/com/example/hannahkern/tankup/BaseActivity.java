@@ -101,19 +101,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
 
-    /*public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+   /*public boolean onOptionsItemSelected(MenuItem item) {
+       // Handle action bar item clicks here. The action bar will
+       // automatically handle clicks on the Home/Up button, so long
+       // as you specify a parent activity in AndroidManifest.xml.
+       int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+       //noinspection SimplifiableIfStatement
+       if (id == R.id.action_settings) {
+           return true;
+       }
 
-        return super.onOptionsItemSelected(item);
-    }*/
+       return super.onOptionsItemSelected(item);
+   }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -137,11 +137,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .newIntent(getApplicationContext(), calculator.getId());
             startActivity(intent);
 
-           /*CalculatorFragment calculatorFragment = new CalculatorFragment();
-           getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.content_frame,calculatorFragment)
-                   .addToBackStack(null)
-                   .commit();*/
+          /*CalculatorFragment calculatorFragment = new CalculatorFragment();
+          getSupportFragmentManager().beginTransaction()
+                  .replace(R.id.content_frame,calculatorFragment)
+                  .addToBackStack(null)
+                  .commit();*/
 
         } else if (id == R.id.nav_map) {
 
@@ -150,11 +150,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
 
-           /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
-           getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.content_frame, mMapFragment)
-                   .addToBackStack(null)
-                   .commit();*/
+          /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
+          getSupportFragmentManager().beginTransaction()
+                  .replace(R.id.content_frame, mMapFragment)
+                  .addToBackStack(null)
+                  .commit();*/
 
         } else if (id == R.id.nav_share) {
 
