@@ -37,7 +37,7 @@ public class BlogActivity extends BaseActivity implements NavigationView.OnNavig
         mWebView = (WebView) findViewById(R.id.webView);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("https://www.welt.de/newsticker/");
+        mWebView.loadUrl("http://www.autonews.com");
 
 
     }
