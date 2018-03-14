@@ -22,6 +22,7 @@ public class CalculatorLab {
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
+    private List<Calculator> preSafe = new ArrayList<>();
 
     public static CalculatorLab get(Context context) {
         if (sCalculatorLab == null) {
@@ -53,8 +54,6 @@ public class CalculatorLab {
     }
 
     public void deleteCalculator (Calculator c){
-
-
 
         /*mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, null, new String[] { String.valueOf(values) });
         mDatabase.close();*/

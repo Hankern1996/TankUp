@@ -93,7 +93,6 @@ public class CalculatorFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-
         CalculatorLab.get(getActivity())
                 .updateCalculator(mCalculator);
     }
@@ -154,14 +153,14 @@ public class CalculatorFragment extends Fragment {
         //MapsActivity activity = (MapsActivity) getActivity();
         // String myDataFromActivity = activity.sendMessage();
 
-        mSafe = (Button) v.findViewById(R.id.safeButton);
+        /*mSafe = (Button) v.findViewById(R.id.safeButton);
         mSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mSafed= true;
                 CalculatorLab.get(getActivity()).addCalculator(mCalculator);
             }
-        });
+        });*/
 
         mMapskm = (TextView) v.findViewById(R.id.mapskm);
 
