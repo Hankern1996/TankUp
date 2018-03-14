@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 /**
@@ -16,8 +18,8 @@ import android.widget.TextView;
 
 public class BlogActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    private WebView mWebView;
 
-    String mString;
 
     public int getLayoutResource() {
 
@@ -32,7 +34,10 @@ public class BlogActivity extends BaseActivity implements NavigationView.OnNavig
         //setSupportActionBar(toolbar);
 
 
-
+        mWebView = (WebView) findViewById(R.id.webView);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.loadUrl("https://www.welt.de/newsticker/");
 
 
     }
