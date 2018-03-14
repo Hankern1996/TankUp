@@ -10,6 +10,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="safe"
+        android:id="@+id/safeButton"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/date_button"
         android:text="Select a date for your trip"/>
 
@@ -19,18 +25,65 @@
         android:id="@+id/constraint1">
 
         <TextView
+            android:id="@+id/maps"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:paddingLeft="9dp"
+            android:text="distance from maps:"
+            android:textAllCaps="true"
+            android:textColor="#425DAE"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mapskm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#425DAE"
+            android:minWidth="20dp"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/maps"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Km2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="#425DAE"
+            android:text="Km"
+            android:textSize="19dp"
+            app:layout_constraintStart_toEndOf="@id/mapskm"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/linie"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/maps" />
+
+        <TextView
             android:id="@+id/title"
-            android:text="Title for your trip:"/>
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Title for your trip:"
+            app:layout_constraintTop_toBottomOf="@id/linie" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLength="25"
             android:id="@+id/enter_title"
-            app:layout_constraintStart_toEndOf="@id/title"/>
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@+id/linie"/>
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -44,17 +97,18 @@
             android:id="@+id/enter_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/enter_title"
+            app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toEndOf="@id/distance"/>
 
         <TextView
-            android:textSize="20dp"
             android:id="@+id/Km"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="Km"
+            android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@id/enter_distance"
-            app:layout_constraintTop_toBottomOf="@+id/enter_title"/>
+            app:layout_constraintTop_toBottomOf="@+id/enter_title" />
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -69,16 +123,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/enter_fuelconsumption"
-            app:layout_constraintTop_toBottomOf="@+id/enter_distance" />
+            app:layout_constraintTop_toBottomOf="@+id/distance" />
 
         <TextView
-            android:textSize="20dp"
             android:id="@+id/EuroperLiter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="l/100km"
+            android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@id/enter_fuelconsumption"
-            app:layout_constraintTop_toBottomOf="@+id/enter_distance"/>
+            app:layout_constraintTop_toBottomOf="@+id/enter_distance" />
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -93,16 +148,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/enter_price"
-            app:layout_constraintTop_toBottomOf="@+id/enter_fuelconsumption" />
+            app:layout_constraintTop_toBottomOf="@+id/fuelConsumption" />
 
         <TextView
-            android:textSize="20dp"
             android:id="@+id/Euro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="€/l"
+            android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@id/enter_price"
-            app:layout_constraintTop_toBottomOf="@+id/enter_fuelconsumption"/>
+            app:layout_constraintTop_toBottomOf="@+id/enter_fuelconsumption" />
 
         <TextView
             style="?android:listSeparatorTextViewStyle"
@@ -117,16 +173,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/enter_passenger"
             app:layout_constraintStart_toEndOf="@id/passenger"
-            app:layout_constraintTop_toBottomOf="@id/enter_price"/>
+            app:layout_constraintTop_toBottomOf="@id/price"/>
 
         <TextView
-            android:textSize="20dp"
             android:id="@+id/Passengers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="Passengers"
+            android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@id/enter_passenger"
-            app:layout_constraintTop_toBottomOf="@id/enter_price"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_price" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -157,7 +214,7 @@
             app:layout_constraintStart_toEndOf="@id/gasprice"/>
 
         <TextView
-            android:textSize="20dp"
+            android:textSize="19dp"
             android:id="@+id/EuroPerPerson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -191,7 +248,7 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:id="@+id/sendButton"
-            android:background="#3B5998"
+            android:background="#425DAE"
             android:textColor="#FFFFFF"
             android:text="Send reminder"
             app:layout_constraintStart_toEndOf="@id/gasprice"

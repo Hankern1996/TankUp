@@ -58,6 +58,8 @@ public class CalculatorFragment extends Fragment {
 
     private Calculator mCalculator;
 
+    private Button mSafe;
+    private TextView mMapskm;
     private EditText mTitle;
     private EditText mConsumption;
     private EditText mGas;
@@ -152,6 +154,27 @@ public class CalculatorFragment extends Fragment {
         //MapsActivity activity = (MapsActivity) getActivity();
         // String myDataFromActivity = activity.sendMessage();
 
+        mSafe = (Button) v.findViewById(R.id.safeButton);
+        mSafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
+            }
+        });
+
+        mMapskm = (TextView) v.findViewById(R.id.mapskm);
+
+        try {
+            item = getActivity().getIntent().getExtras().getString("data");
+
+        } catch (NullPointerException e ) {
+            item = "";
+        }
+
+        mMapskm.setText(item);
+
+
         mTitle = (EditText) v.findViewById(R.id.enter_title);
         mTitle.setText(mCalculator.getTitle());
         mTitle.addTextChangedListener(new TextWatcher() {
@@ -209,35 +232,12 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-        //item = getActivity().getIntent().getExtras().getString("data");
-
-        // mKm1 = (EditText) v.findViewById(R.id.enter_distance);
-        //  mKm1.setText(getActivity().getIntent().getExtras().getString("data"));
-
-        try {
-            item = getActivity().getIntent().getExtras().getString("data");
-
-        } catch (NullPointerException e ) {
-            item = "";
-        }
-
-            if (item == "")
-            { mKm = (EditText) v.findViewById(R.id.enter_distance);
-            mKm.setText(mCalculator.getKm());}
-
-            else {
-            mKm = (EditText) v.findViewById(R.id.enter_distance) ;
-            mCalculator.setKm(item);
-            mKm.setText(mCalculator.getKm());
-
-            }
-
-
-
-            mKm.addTextChangedListener(new TextWatcher() {
+        mKm = (EditText) v.findViewById(R.id.enter_distance);
+        mKm.setText(mCalculator.getKm());
+        mKm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // This space intentionally left blank
+
             }
 
             @Override
@@ -247,9 +247,49 @@ public class CalculatorFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //This one too
+
             }
         });
+
+        //item = getActivity().getIntent().getExtras().getString("data");
+
+        // mKm1 = (EditText) v.findViewById(R.id.enter_distance);
+        //  mKm1.setText(getActivity().getIntent().getExtras().getString("data"));
+
+        /*try {
+            item = getActivity().getIntent().getExtras().getString("data");
+
+        } catch (NullPointerException e ) {
+            item = "";
+        }
+
+            if (item == "")
+            { mKm = (EditText) v.findViewById(R.id.enter_distance);
+            mKm.setText(mCalculator.getKm());
+            mKm.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mCalculator.setKm(s.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });}
+
+            else {
+            mKm = (EditText) v.findViewById(R.id.enter_distance) ;
+            mCalculator.setKm(item);
+            mKm.setText(item);
+
+            }*/
+
 
         mPassenger = (EditText) v.findViewById(R.id.enter_passenger);
         mPassenger.setText(mCalculator.getPassenger());
@@ -444,12 +484,6 @@ public class CalculatorFragment extends Fragment {
         mResultText.setText(String.valueOf(result));
         mCalculator.setErgebnis(String.valueOf(result));
     }
-
-
-
-
-
-
 
     private String getMessage() {
 
