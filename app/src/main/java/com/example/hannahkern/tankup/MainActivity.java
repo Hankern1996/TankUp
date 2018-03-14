@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.calculaterr) {
 
             Calculator calculator = new Calculator();
+
             CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
 
             Intent intent = CalculatorPagerActivity

@@ -58,7 +58,6 @@ public class CalculatorFragment extends Fragment {
 
     private Calculator mCalculator;
 
-    private Button mSafe;
     private TextView mMapskm;
     private EditText mTitle;
     private EditText mConsumption;
@@ -70,6 +69,7 @@ public class CalculatorFragment extends Fragment {
     private Button mCalculateButton;
     private Button mDeleteButton;
     private Button mSendButton;
+    private Button mSafe;
 
     private String item;
 
@@ -353,6 +353,14 @@ public class CalculatorFragment extends Fragment {
                         .newInstance(mCalculator.getDate());
                 dialog.setTargetFragment(CalculatorFragment.this, REQUEST_DATE);
                 dialog.show(manager, DIALOG_DATE);
+            }
+        });
+
+        mSafe = (Button) v.findViewById(R.id.safeButton);
+        mSafe.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
+                getActivity().finish();
             }
         });
         ShareLinkContent content = new ShareLinkContent.Builder()

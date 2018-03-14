@@ -42,7 +42,13 @@ public class CalculatorLab {
 
     public void addCalculator(Calculator c) {
         ContentValues values = getContentValues(c);
+        mDatabase.insert(CalculatorDbSchema.CalculatorTable.NAME, null, values);
 
+
+    }
+
+    public void addDatetoDatabase(Calculator c){
+        ContentValues values = getContentValues(c);
         mDatabase.insert(CalculatorDbSchema.CalculatorTable.NAME, null, values);
     }
 
