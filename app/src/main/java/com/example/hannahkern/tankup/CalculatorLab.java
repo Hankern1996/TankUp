@@ -132,6 +132,7 @@ public class CalculatorLab {
         values.put(CalculatorDbSchema.CalculatorTable.Cols.PASSENGER, calculator.getPassenger());
         values.put(CalculatorDbSchema.CalculatorTable.Cols.ERGEBNIS, calculator.getErgebnis());
         values.put(CalculatorDbSchema.CalculatorTable.Cols.TITLE, calculator.getTitle());
+        values.put(CalculatorDbSchema.CalculatorTable.Cols.IMAGE,calculator.getPhotoFilename());
 
         return values;
     }
