@@ -149,10 +149,7 @@ public class CalculatorFragment extends Fragment {
                     }
                 });
 
-        // String strtext = getArguments().getString("edttext");
 
-        //MapsActivity activity = (MapsActivity) getActivity();
-        // String myDataFromActivity = activity.sendMessage();
 
         /*mSafe = (Button) v.findViewById(R.id.safeButton);
         mSafe.setOnClickListener(new View.OnClickListener() {
@@ -250,44 +247,7 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-        //item = getActivity().getIntent().getExtras().getString("data");
 
-        // mKm1 = (EditText) v.findViewById(R.id.enter_distance);
-        //  mKm1.setText(getActivity().getIntent().getExtras().getString("data"));
-
-        /*try {
-            item = getActivity().getIntent().getExtras().getString("data");
-
-        } catch (NullPointerException e ) {
-            item = "";
-        }
-
-            if (item == "")
-            { mKm = (EditText) v.findViewById(R.id.enter_distance);
-            mKm.setText(mCalculator.getKm());
-            mKm.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    mCalculator.setKm(s.toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });}
-
-            else {
-            mKm = (EditText) v.findViewById(R.id.enter_distance) ;
-            mCalculator.setKm(item);
-            mKm.setText(item);
-
-            }*/
 
 
         mPassenger = (EditText) v.findViewById(R.id.enter_passenger);
@@ -367,22 +327,6 @@ public class CalculatorFragment extends Fragment {
                         .setContentUrl(Uri.parse("https://www.benzinpreis-aktuell.de"))
                         .setQuote("Hey, I just planned my last trip with my friends on the New TankUp-App. Please check your Email, I sent you a payment notification!")
                         .build();
-       /* ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
-                .putString("og:type", "post.post")
-                .putString("og:title", "Tankup - My last journey")
-                .putString("og:description", "This was my last journey: ")
-                //.putString("og:description")
-                .build();
-
-        ShareOpenGraphAction action = new ShareOpenGraphAction.Builder()
-                .setActionType("books.reads")
-                .putObject("book", object)
-                .build();
-
-        ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
-                .setPreviewPropertyName("book")
-                .setAction(action)
-                .build();*/
 
 
         ShareButton shareButton = (ShareButton)v.findViewById(R.id.share_button);

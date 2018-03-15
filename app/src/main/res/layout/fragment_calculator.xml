@@ -49,16 +49,7 @@
             app:layout_constraintStart_toEndOf="@id/maps"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/Km2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="#425DAE"
-            android:text="Km"
-            android:textSize="19dp"
-            app:layout_constraintStart_toEndOf="@id/mapskm"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <View
             android:layout_width="match_parent"

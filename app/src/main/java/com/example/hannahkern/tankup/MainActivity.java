@@ -84,21 +84,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    @Override
-    /*public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
     @SuppressWarnings("StatementWithEmptyBody")
 
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -123,22 +108,14 @@ public class MainActivity extends AppCompatActivity
                     .newIntent(getApplicationContext(), calculator.getId());
             startActivity(intent);
 
-           /*CalculatorFragment calculatorFragment = new CalculatorFragment();
-           getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.content_frame,calculatorFragment)
-                   .addToBackStack(null)
-                   .commit();*/
+
 
         } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
             MainActivity.this.startActivity(intent1);
 
-           /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
-           getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.content_frame, mMapFragment)
-                   .addToBackStack(null)
-                   .commit();*/
+
 
         } else if (id == R.id.nav_share) {
             Intent intent1 = new Intent(MainActivity.this, BlogActivity.class);
@@ -149,11 +126,6 @@ public class MainActivity extends AppCompatActivity
             Intent intent1 = new Intent(MainActivity.this, ListActivity.class);
             MainActivity.this.startActivity(intent1);
 
-            /*CalculatorListFragment calculatorFragment = new CalculatorListFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.drawer_layout,calculatorFragment)
-                    .addToBackStack(null)
-                    .commit();*/
         }
 
 

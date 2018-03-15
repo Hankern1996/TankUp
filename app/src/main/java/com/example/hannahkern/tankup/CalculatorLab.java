@@ -35,10 +35,7 @@ public class CalculatorLab {
         mContext = context.getApplicationContext();
         mDatabase = new CalculatorBaseHelper(mContext)
                 .getWritableDatabase();
-        /*for (int i = 0; i < 100; i++){
-            Calculator calculator = new Calculator();
-            mCalculators.add(calculator);
-        }*/
+
     }
 
     public void addCalculator(Calculator c) {
@@ -54,9 +51,6 @@ public class CalculatorLab {
     }
 
     public void deleteCalculator (Calculator c){
-
-        /*mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, null, new String[] { String.valueOf(values) });
-        mDatabase.close();*/
 
         String uuidString = c.getId().toString();
         ContentValues values = getContentValues(c);
