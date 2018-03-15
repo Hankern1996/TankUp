@@ -138,8 +138,8 @@ public class CalculatorLab {
     }
 
 
-    public File getPhotoFile(Calculator calculator) {
+        public File getPhotoFile(Calculator calculator) {
         File filesDir = mContext.getFilesDir();
         return new File(filesDir, calculator.getPhotoFilename());
-    }
-}
+
+}}
