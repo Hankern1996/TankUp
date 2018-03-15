@@ -9,6 +9,7 @@ import com.example.hannahkern.tankup.database.CalculatorBaseHelper;
 import com.example.hannahkern.tankup.database.CalculatorCursorWrapper;
 import com.example.hannahkern.tankup.database.CalculatorDbSchema;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -133,5 +134,11 @@ public class CalculatorLab {
         values.put(CalculatorDbSchema.CalculatorTable.Cols.TITLE, calculator.getTitle());
 
         return values;
+    }
+
+
+    public File getPhotoFile(Calculator calculator) {
+        File filesDir = mContext.getFilesDir();
+        return new File(filesDir, calculator.getPhotoFilename());
     }
 }

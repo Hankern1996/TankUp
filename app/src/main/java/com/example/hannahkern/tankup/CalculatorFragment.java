@@ -3,11 +3,16 @@ package com.example.hannahkern.tankup;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,9 +46,11 @@ import com.facebook.share.widget.ShareButton;
 import com.facebook.share.widget.ShareDialog;
 
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -70,6 +79,13 @@ public class CalculatorFragment extends Fragment {
     private Button mDeleteButton;
     private Button mSendButton;
     private Button mSafe;
+    private ImageButton mPhotoButton;
+    private ImageView mPhotoView;
+    private File mPhotoFile;
+
+    private static final int REQUEST_PHOTO= 2;
+
+
 
     private String item;
 
@@ -88,6 +104,9 @@ public class CalculatorFragment extends Fragment {
 
         UUID calculatorID = (UUID) getArguments().getSerializable(ARG_CALCULATOR_ID);
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
+
+        mPhotoFile = CalculatorLab.get(getActivity()).getPhotoFile(mCalculator);
+
     }
 
     @Override
@@ -98,11 +117,59 @@ public class CalculatorFragment extends Fragment {
     }
 
 
+    private void updatePhotoView() {
+        if (mPhotoFile == null || !mPhotoFile.exists()) {
+            mPhotoView.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(
+                    mPhotoFile.getPath(), getActivity());
+            mPhotoView.setImageBitmap(bitmap);
+        }
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
+
+
+        mPhotoButton = (ImageButton) v.findViewById(R.id.image_button);
+
+        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        PackageManager packageManager = getContext().getPackageManager();
+        boolean canTakePhoto = mPhotoFile != null &&
+                captureImage.resolveActivity(packageManager) != null;
+        mPhotoButton.setEnabled(canTakePhoto);
+
+        mPhotoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = FileProvider.getUriForFile(getActivity(),
+                        "com.example.hannahkern.tankup.fileprovider",
+                        mPhotoFile);
+                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+
+                List<ResolveInfo> cameraActivities = getActivity()
+                        .getPackageManager().queryIntentActivities(captureImage,
+                                PackageManager.MATCH_DEFAULT_ONLY);
+
+                for (ResolveInfo activity : cameraActivities) {
+                    getActivity().grantUriPermission(activity.activityInfo.packageName,
+                            uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                }
+
+                startActivityForResult(captureImage, REQUEST_PHOTO);
+            }
+        });
+
+
+        mPhotoView = (ImageView) v.findViewById(R.id.foto_trip);
+        updatePhotoView();
+
+
 
         callbackManager= CallbackManager.Factory.create();
 
@@ -355,6 +422,17 @@ public class CalculatorFragment extends Fragment {
             mCalculator.setDate(date);
             updateDate();
         }
+
+         else if (requestCode == REQUEST_PHOTO) {
+        Uri uri = FileProvider.getUriForFile(getActivity(),
+                "com.example.hannahkern.tankup.fileprovider",
+                mPhotoFile);
+
+        getActivity().revokeUriPermission(uri,
+                Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        updatePhotoView();
+    }
     }
 
     private void updateDate() {
