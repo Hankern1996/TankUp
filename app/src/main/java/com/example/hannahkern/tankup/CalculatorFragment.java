@@ -67,6 +67,8 @@ public class CalculatorFragment extends Fragment {
 
     private Calculator mCalculator;
 
+   // private int mSafed;
+
     private TextView mMapskm;
     private EditText mTitle;
     private EditText mConsumption;
@@ -88,6 +90,7 @@ public class CalculatorFragment extends Fragment {
 
 
     private String item;
+
 
     public static CalculatorFragment newInstance(UUID calculatorId) {
         Bundle args = new Bundle();
@@ -112,6 +115,8 @@ public class CalculatorFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        //Log.i("value mSafed in onPause", String.valueOf(mSafed));
+
         CalculatorLab.get(getActivity())
                 .updateCalculator(mCalculator);
     }
@@ -222,8 +227,8 @@ public class CalculatorFragment extends Fragment {
         mSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSafed= true;
-                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
+                mSafed = 2;
+                //CalculatorLab.get(getActivity()).addCalculator(mCalculator);
             }
         });*/
 
@@ -383,13 +388,6 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-        mSafe = (Button) v.findViewById(R.id.safeButton);
-        mSafe.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
-                getActivity().finish();
-            }
-        });
         ShareLinkContent content = new ShareLinkContent.Builder()
                         .setContentUrl(Uri.parse("https://www.benzinpreis-aktuell.de"))
                         .setQuote("Hey, I just planned my last trip with my friends on the New TankUp-App. Please check your Email, I sent you a payment notification!")

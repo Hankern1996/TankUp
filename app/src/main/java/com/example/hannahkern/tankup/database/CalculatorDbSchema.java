@@ -1,5 +1,7 @@
 package com.example.hannahkern.tankup.database;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by pauli on 11.03.2018.
  */
@@ -18,6 +20,7 @@ public class CalculatorDbSchema {
                 public static final String PASSENGER = "passenger";
                 public static final String ERGEBNIS = "ergebnis";
                 public static final String TITLE = "title";
+                public static final String IMAGE = "image";
             }
         }
 

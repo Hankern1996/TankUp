@@ -91,4 +91,5 @@ public class Calculator {
         return "IMG_" + getId().toString() + ".jpg";
     }
 
+    public void setPhotoFilename(String filename){filename="IMG_" + getId().toString() + ".jpg";}
 }

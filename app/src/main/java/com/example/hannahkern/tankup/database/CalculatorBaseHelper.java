@@ -30,7 +30,8 @@ public class CalculatorBaseHelper extends SQLiteOpenHelper {
                 CalculatorTable.Cols.KM +  ", " +
                 CalculatorTable.Cols.PASSENGER + ", " +
                 CalculatorTable.Cols.ERGEBNIS + ", " +
-                CalculatorTable.Cols.TITLE +
+                CalculatorTable.Cols.TITLE + ", "+
+                CalculatorTable.Cols.IMAGE +
                 ")");
     }
 

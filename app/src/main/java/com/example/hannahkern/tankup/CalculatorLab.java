@@ -23,7 +23,7 @@ public class CalculatorLab {
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
-    private List<Calculator> preSafe = new ArrayList<>();
+    //private List<Calculator> preSafe = new ArrayList<>();
 
     public static CalculatorLab get(Context context) {
         if (sCalculatorLab == null) {

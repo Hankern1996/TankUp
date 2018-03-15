@@ -26,6 +26,7 @@ public class CalculatorCursorWrapper extends CursorWrapper {
         String passenger = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.PASSENGER));
         String ergebnis = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.ERGEBNIS));
         String title = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.TITLE));
+        String image = getString(getColumnIndex(CalculatorDbSchema.CalculatorTable.Cols.IMAGE));
 
         Calculator calculator = new Calculator(UUID.fromString(uuidString));
         calculator.setDate(new Date(date));
@@ -35,6 +36,7 @@ public class CalculatorCursorWrapper extends CursorWrapper {
         calculator.setPassenger(passenger);
         calculator.setErgebnis(ergebnis);
         calculator.setTitle(title);
+        calculator.setPhotoFilename(image);
 
         return calculator;
     }
