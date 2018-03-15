@@ -46,10 +46,7 @@ public class CalculatorLab {
 
     }
 
-    public void addDatetoDatabase(Calculator c){
-        ContentValues values = getContentValues(c);
-        mDatabase.insert(CalculatorDbSchema.CalculatorTable.NAME, null, values);
-    }
+
 
     public void deleteCalculator (Calculator c){
 
