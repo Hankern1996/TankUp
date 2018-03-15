@@ -67,7 +67,7 @@ public class CalculatorFragment extends Fragment {
 
     private Calculator mCalculator;
 
-   // private int mSafed;
+    //private int mSafed;
 
     private TextView mMapskm;
     private EditText mTitle;
@@ -115,8 +115,6 @@ public class CalculatorFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        //Log.i("value mSafed in onPause", String.valueOf(mSafed));
-
         CalculatorLab.get(getActivity())
                 .updateCalculator(mCalculator);
     }
@@ -436,7 +434,7 @@ public class CalculatorFragment extends Fragment {
     private void updateDate() {
         Date date = mCalculator.getDate();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        mDateButton.setText("Select a date for your trip: " + simpleDateFormat.format(date));
+        mDateButton.setText("Select a date for your trip:\n" + simpleDateFormat.format(date));
     }
 
     private void calculate()throws NumberFormatException{

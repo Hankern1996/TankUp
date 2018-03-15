@@ -7,58 +7,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:id="@+id/foto_trip"
-        android:scaleType="center"
-        android:cropToPadding="true"
-        android:background="@color/cardview_light_background"/>
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_button"
-        android:src="@drawable/cameraa"/>
-    </LinearLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="286dp"
-            android:layout_height="wrap_content">
-
-            <Button
+    <!--<Button
                 android:id="@+id/safeButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="safe"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <Button
-                android:id="@+id/date_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select a date for your trip"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/safeButton" />
-        </android.support.constraint.ConstraintLayout>
-
-    </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent" />-->
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/constraint1">
+
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:id="@+id/foto_trip"
+            android:scaleType="center"
+            android:cropToPadding="true"
+            android:background="@color/cardview_light_background"/>
+
+        <ImageButton
+            android:id="@+id/image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/cameraa"
+            app:layout_constraintStart_toEndOf="@id/foto_trip"
+            android:layout_marginLeft="5dp" />
+
+        <Button
+            android:id="@+id/date_button"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toEndOf="@+id/image_button" />
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/linie1"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/foto_trip" />
 
         <TextView
             android:id="@+id/maps"
@@ -72,7 +64,7 @@
             android:textColor="#425DAE"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/linie1" />
 
         <TextView
             android:id="@+id/mapskm"
@@ -84,8 +76,6 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/maps"
             app:layout_constraintTop_toTopOf="parent" />
-
-
 
         <View
             android:layout_width="match_parent"
@@ -226,11 +216,16 @@
 
         <TextView
             android:id="@+id/gasprice"
-            style="?android:listSeparatorTextViewStyle"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Gasprice per person:" />
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:paddingLeft="9dp"
+            android:text="Gasprice per person:"
+            android:textAllCaps="true"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -241,28 +236,43 @@
             app:layout_constraintStart_toEndOf="@id/gasprice"/>
 
         <TextView
-            android:textSize="19dp"
             android:id="@+id/EuroPerPerson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="€/Person"
-            app:layout_constraintStart_toEndOf="@id/result" />
+            android:textSize="19dp"
+            app:layout_constraintStart_toEndOf="@id/result"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/linie2"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@id/result" />
 
         <TextView
             android:id="@+id/share"
-            style="?android:listSeparatorTextViewStyle"
+            android:textAllCaps="true"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:paddingLeft="9dp"
             android:text="Share with friends:"
-            app:layout_constraintTop_toBottomOf="@id/gasprice" />
+            app:layout_constraintTop_toBottomOf="@id/linie2" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/gasprice"
-            app:layout_constraintTop_toBottomOf="@id/gasprice"/>
+            app:layout_constraintTop_toBottomOf="@id/linie2" />
 
         <com.facebook.share.widget.ShareButton
             android:id="@+id/share_button"
@@ -287,6 +297,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/deleteButton"
+        android:layout_marginTop="8dp"
         android:text="delete route"/>
 
 </LinearLayout>
