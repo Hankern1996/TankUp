@@ -101,19 +101,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
 
-   /*public boolean onOptionsItemSelected(MenuItem item) {
-       // Handle action bar item clicks here. The action bar will
-       // automatically handle clicks on the Home/Up button, so long
-       // as you specify a parent activity in AndroidManifest.xml.
-       int id = item.getItemId();
 
-       //noinspection SimplifiableIfStatement
-       if (id == R.id.action_settings) {
-           return true;
-       }
-
-       return super.onOptionsItemSelected(item);
-   }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -137,24 +125,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .newIntent(getApplicationContext(), calculator.getId());
             startActivity(intent);
 
-          /*CalculatorFragment calculatorFragment = new CalculatorFragment();
-          getSupportFragmentManager().beginTransaction()
-                  .replace(R.id.content_frame,calculatorFragment)
-                  .addToBackStack(null)
-                  .commit();*/
+
 
         } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(BaseActivity.this, MapsActivity.class);
             BaseActivity.this.startActivity(intent1);
 
-
-
-          /*com.example.hannahkern.tankup.MapFragment mMapFragment = new com.example.hannahkern.tankup.MapFragment();
-          getSupportFragmentManager().beginTransaction()
-                  .replace(R.id.content_frame, mMapFragment)
-                  .addToBackStack(null)
-                  .commit();*/
 
         } else if (id == R.id.nav_share) {
 
@@ -167,51 +144,37 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             Intent intent1 = new Intent(BaseActivity.this, ListActivity.class);
             BaseActivity.this.startActivity(intent1);
-           /* if (getLayoutResource()== R.layout.activity_main2){
-                CalculatorListFragment calculatorFragment = new CalculatorListFragment();
-
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.drawer_layout2,calculatorFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-            else if (getLayoutResource()==R.layout.activity_main3){
-                CalculatorListFragment calculatorFragment = new CalculatorListFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.drawer_layout3,calculatorFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-
-            else if (getLayoutResource()==R.layout.activity_main4){
-                CalculatorListFragment calculatorFragment = new CalculatorListFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.drawer_layout4,calculatorFragment)
-                        .addToBackStack(null)
-                        .commit();
-
-            }
-            else if (getLayoutResource() == R.layout.activity_main5){
-                CalculatorListFragment calculatorFragment = new CalculatorListFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.drawer_layout5,calculatorFragment)
-                        .addToBackStack(null)
-                        .commit();
-
-            }*/
-
 
         }
 
-        if (getLayoutResource()== R.layout.activity_main2){
+
+        if (getLayoutResource() == R.layout.activity_main){
+            drawerLayout = R.id.drawer_layout;
+            navView = R.id.nav_view;
+        }
+
+        else if (getLayoutResource()== R.layout.activity_main2){
 
             drawerLayout = R.id.drawer_layout2;
             navView = R.id.nav_view2;
 
         }
+
         else if (getLayoutResource() == R.layout.activity_main3){
             drawerLayout = R.id.drawer_layout3;
             navView = R.id.nav_view3;
+        }
+        else if (getLayoutResource()== R.layout.activity_main4){
+
+            drawerLayout = R.id.drawer_layout4;
+            navView = R.id.nav_view4;
+
+        }
+        else if (getLayoutResource()== R.layout.activity_main5){
+
+            drawerLayout = R.id.drawer_layout5;
+            navView = R.id.nav_view5;
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(drawerLayout);
@@ -231,7 +194,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void onBackPressed() {
 
-        if (getLayoutResource()== R.layout.activity_main2){
+         if (getLayoutResource() == R.layout.activity_main){
+            drawerLayout = R.id.drawer_layout;
+        }
+        else if  (getLayoutResource()== R.layout.activity_main2){
 
             drawerLayout = R.id.drawer_layout2;
 
