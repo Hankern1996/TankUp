@@ -163,7 +163,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
         } else if (id == R.id.nav_trips) {
-            if (getLayoutResource()== R.layout.activity_main2){
+
+
+            Intent intent1 = new Intent(BaseActivity.this, ListActivity.class);
+            BaseActivity.this.startActivity(intent1);
+           /* if (getLayoutResource()== R.layout.activity_main2){
                 CalculatorListFragment calculatorFragment = new CalculatorListFragment();
 
                 getSupportFragmentManager().beginTransaction()
@@ -194,7 +198,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                         .addToBackStack(null)
                         .commit();
 
-            }
+            }*/
 
 
         }

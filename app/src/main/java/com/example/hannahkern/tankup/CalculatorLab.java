@@ -107,6 +107,7 @@ public class CalculatorLab {
         String uuidString = calculator.getId().toString();
         ContentValues values = getContentValues(calculator);
 
+
         mDatabase.update(CalculatorDbSchema.CalculatorTable.NAME, values,
                 CalculatorDbSchema.CalculatorTable.Cols.UUID + " = ?",
                 new String[] { uuidString });

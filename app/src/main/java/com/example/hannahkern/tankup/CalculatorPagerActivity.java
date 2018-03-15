@@ -36,6 +36,9 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
         return intent;
     }
 
+    private Calculator mCalculator;
+
+
     @Override
     public int getLayoutResource() {
         return R.layout.activity_main3;
@@ -89,6 +92,7 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
                 break;
             }
         }
+
     }
 
 

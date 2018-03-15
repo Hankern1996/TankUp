@@ -94,18 +94,17 @@
             android:theme="@style/AppTheme.NoActionBar"
 
         />
-        <activity
-            android:name=".CalculatorListActivity"
-            android:label="Last trips"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
 
         <activity
             android:name=".BlogActivity"
             android:label="Newsticker"
             android:theme="@style/AppTheme.NoActionBar"
             />
-
+        <activity
+            android:name=".ListActivity"
+            android:label="Your Trips"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
 
 
     </application>
