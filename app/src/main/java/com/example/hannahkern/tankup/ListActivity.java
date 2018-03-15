@@ -1,15 +1,21 @@
 package com.example.hannahkern.tankup;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -68,6 +74,7 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
         private Calculator mCalculator;
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private ImageView mImageView;
 
         public CalculatorHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_calculator, parent, false));
@@ -75,6 +82,7 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.calculator_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.calculator_date);
+
         }
 
         public void bind(Calculator calculator) {
@@ -83,7 +91,10 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
             mDateTextView.setText(simpleDateFormat.format(date));
             mTitleTextView.setText( mCalculator.getTitle());
+
+
         }
+
 
         @Override
         public void onClick(View view) {
