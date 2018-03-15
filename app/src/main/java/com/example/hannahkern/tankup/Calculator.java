@@ -17,6 +17,7 @@ public class Calculator {
     private String mKm;
     private String mPassenger;
     private String mErgebnis;
+    private String mFilename;
 
     public Calculator(){
         this(UUID.randomUUID());
@@ -88,8 +89,9 @@ public class Calculator {
     }
 
     public String getPhotoFilename() {
-        return "IMG_" + getId().toString() + ".jpg";
+        return mFilename;
     }
 
-    public void setPhotoFilename(String filename){filename="IMG_" + getId().toString() + ".jpg";}
+    public void setPhotoFilename(String filename){filename="IMG_" + getId().toString() + ".jpg";
+    mFilename=filename;}
 }
