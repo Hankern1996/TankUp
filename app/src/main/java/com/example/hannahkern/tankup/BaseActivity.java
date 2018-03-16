@@ -141,7 +141,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         } else if (id == R.id.nav_trips) {
 
-
             Intent intent1 = new Intent(BaseActivity.this, ListActivity.class);
             BaseActivity.this.startActivity(intent1);
 

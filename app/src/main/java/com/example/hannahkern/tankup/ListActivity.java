@@ -91,8 +91,6 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
             mDateTextView.setText(simpleDateFormat.format(date));
             mTitleTextView.setText( mCalculator.getTitle());
-
-
         }
 
 

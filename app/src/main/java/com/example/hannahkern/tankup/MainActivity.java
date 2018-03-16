@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity
                     .newIntent(getApplicationContext(), calculator.getId());
             startActivity(intent);
 
-
-
         } else if (id == R.id.nav_map) {
 
             Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
@@ -122,6 +120,8 @@ public class MainActivity extends AppCompatActivity
             MainActivity.this.startActivity(intent1);
 
         } else if (id == R.id.nav_trips) {
+
+
 
             Intent intent1 = new Intent(MainActivity.this, ListActivity.class);
             MainActivity.this.startActivity(intent1);

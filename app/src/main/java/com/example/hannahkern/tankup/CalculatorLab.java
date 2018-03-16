@@ -134,6 +134,17 @@ public class CalculatorLab {
         return values;
     }
 
+    /*public int LastInsert() {
+
+        final String MY_QUERY = "SELECT MAX(" + CalculatorDbSchema.CalculatorTable.Cols.UUID
+                + ") FROM " + CalculatorDbSchema.CalculatorTable.NAME;
+        Cursor cur = mDatabase.rawQuery(MY_QUERY, null);
+        cur.moveToFirst();
+        int ID = cur.getInt(0);
+        cur.close();
+        return ID;
+    }*/
+
 
         public File getPhotoFile(Calculator calculator) {
         File filesDir = mContext.getFilesDir();

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hannahkern.tankup.database.CalculatorDbSchema;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -53,6 +55,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 /**
  * Created by hannahkern on 28.02.18.
  */
@@ -67,7 +71,9 @@ public class CalculatorFragment extends Fragment {
 
     private Calculator mCalculator;
 
-    //private int mSafed;
+    private int mSafed =1;
+
+    private SQLiteDatabase mDatabase;
 
     private TextView mMapskm;
     private EditText mTitle;
@@ -115,10 +121,10 @@ public class CalculatorFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        CalculatorLab.get(getActivity())
-                .updateCalculator(mCalculator);
-    }
+            CalculatorLab.get(getActivity())
+                    .updateCalculator(mCalculator);
 
+    }
 
     private void updatePhotoView() {
         if (mPhotoFile == null || !mPhotoFile.exists()) {
@@ -168,11 +174,8 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-
         mPhotoView = (ImageView) v.findViewById(R.id.foto_trip);
         updatePhotoView();
-
-
 
         callbackManager= CallbackManager.Factory.create();
 
@@ -219,16 +222,16 @@ public class CalculatorFragment extends Fragment {
                     }
                 });
 
-
-
-        /*mSafe = (Button) v.findViewById(R.id.safeButton);
+        mSafe = (Button) v.findViewById(R.id.safeButton);
+        //mSafe.setOnClickListener(listener);
         mSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSafed = 2;
+                getActivity().finish();
                 //CalculatorLab.get(getActivity()).addCalculator(mCalculator);
             }
-        });*/
+        });
 
         mMapskm = (TextView) v.findViewById(R.id.mapskm);
 
@@ -317,9 +320,6 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
-
-
-
         mPassenger = (EditText) v.findViewById(R.id.enter_passenger);
         mPassenger.setText(mCalculator.getPassenger());
         mPassenger.addTextChangedListener(new TextWatcher() {
@@ -346,7 +346,6 @@ public class CalculatorFragment extends Fragment {
         mCalculateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 calculate();
-
             }
         });
 
@@ -358,7 +357,6 @@ public class CalculatorFragment extends Fragment {
                 getActivity().finish();
             }
         });
-
 
         mSendButton = (Button) v.findViewById(R.id.sendButton);
         mSendButton.setOnClickListener(new View.OnClickListener() {
@@ -391,14 +389,10 @@ public class CalculatorFragment extends Fragment {
                         .setQuote("Hey, I just planned my last trip with my friends on the New TankUp-App. Please check your Email, I sent you a payment notification!")
                         .build();
 
-
         ShareButton shareButton = (ShareButton)v.findViewById(R.id.share_button);
         shareButton.setShareContent(content);
 
-
-
         return v;
-
     }
 
     @Override
