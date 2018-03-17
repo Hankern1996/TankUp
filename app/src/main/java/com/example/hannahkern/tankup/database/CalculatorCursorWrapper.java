@@ -41,5 +41,4 @@ public class CalculatorCursorWrapper extends CursorWrapper {
         return calculator;
     }
 
-
 }

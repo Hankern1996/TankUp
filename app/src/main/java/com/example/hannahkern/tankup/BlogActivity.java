@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
@@ -21,6 +22,10 @@ public class BlogActivity extends BaseActivity implements NavigationView.OnNavig
     private WebView mWebView;
 
 
+    public void onPause(){
+        super.onPause();
+        Log.i("onPause = ", "onPause: ");
+    }
     public int getLayoutResource() {
 
         return R.layout.activity_main5;

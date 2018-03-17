@@ -42,8 +42,6 @@ public class CalculatorLab {
     public void addCalculator(Calculator c) {
         ContentValues values = getContentValues(c);
         mDatabase.insert(CalculatorDbSchema.CalculatorTable.NAME, null, values);
-
-
     }
 
 
@@ -55,7 +53,15 @@ public class CalculatorLab {
 
         mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, CalculatorDbSchema.CalculatorTable.Cols.UUID+ " = ?",
                 new String[] { String.valueOf(uuidString) });
+    }
 
+    public void deleteLastCalculator (Calculator c){
+
+        String uuidString = String.valueOf(LastInsert());
+        ContentValues values = getContentValues(c);
+
+        mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, CalculatorDbSchema.CalculatorTable.Cols.UUID + " = ?",
+                new String[] {String.valueOf(uuidString)});
 
     }
 
@@ -76,6 +82,7 @@ public class CalculatorLab {
 
         return calculators;
     }
+
 
     public Calculator getCalculator (UUID id) {
         CalculatorCursorWrapper cursor = queryCalculators(
@@ -134,7 +141,7 @@ public class CalculatorLab {
         return values;
     }
 
-    /*public int LastInsert() {
+    public int LastInsert() {
 
         final String MY_QUERY = "SELECT MAX(" + CalculatorDbSchema.CalculatorTable.Cols.UUID
                 + ") FROM " + CalculatorDbSchema.CalculatorTable.NAME;
@@ -143,7 +150,7 @@ public class CalculatorLab {
         int ID = cur.getInt(0);
         cur.close();
         return ID;
-    }*/
+    }
 
 
         public File getPhotoFile(Calculator calculator) {

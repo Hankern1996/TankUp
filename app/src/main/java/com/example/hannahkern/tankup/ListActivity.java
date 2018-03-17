@@ -28,6 +28,7 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
 
     public RecyclerView mCalculatorRecyclerView;
     public CalculatorAdapter mAdapter;
+    private Calculator mCalculator;
 
 
     @Override

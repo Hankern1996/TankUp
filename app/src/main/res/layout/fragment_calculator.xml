@@ -11,14 +11,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-                android:id="@+id/safeButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="safe"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +37,7 @@
 
         <Button
             android:id="@+id/date_button"
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="80dp"
             app:layout_constraintStart_toEndOf="@+id/image_button" />
 
@@ -80,7 +72,7 @@
             android:textSize="15sp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/maps"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/linie1" />
 
         <View
             android:layout_width="match_parent"

@@ -222,16 +222,17 @@ public class CalculatorFragment extends Fragment {
                     }
                 });
 
-        mSafe = (Button) v.findViewById(R.id.safeButton);
+        /*mSafe = (Button) v.findViewById(R.id.safeButton);
         //mSafe.setOnClickListener(listener);
         mSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSafed = 2;
-                getActivity().finish();
-                //CalculatorLab.get(getActivity()).addCalculator(mCalculator);
+                //mSafed = 2;
+                //getActivity().finish();
+                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
             }
-        });
+        });*/
+
 
         mMapskm = (TextView) v.findViewById(R.id.mapskm);
 
