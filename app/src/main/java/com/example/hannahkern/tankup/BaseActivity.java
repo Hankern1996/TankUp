@@ -125,6 +125,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .newIntent(getApplicationContext(), calculator.getId());
             startActivity(intent);
 
+            /*Intent intent = CalculatorActivity
+                    .newIntent(getApplicationContext(), calculator.getId());
+            startActivity(intent);*/
 
 
         } else if (id == R.id.nav_map) {

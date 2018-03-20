@@ -99,6 +99,7 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
 
         @Override
         public void onClick(View view) {
+            //Intent intent = CalculatorPagerActivity.newIntent(ListActivity.this, mCalculator.getId());
             Intent intent = CalculatorPagerActivity.newIntent(ListActivity.this, mCalculator.getId());
             startActivity(intent);
         }

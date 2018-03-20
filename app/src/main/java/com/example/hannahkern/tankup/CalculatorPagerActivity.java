@@ -77,7 +77,6 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
                 break;
             }
         }
-
     }
 
 
