@@ -3,6 +3,7 @@ package com.example.hannahkern.tankup;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -24,6 +25,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +77,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
         changeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                try{
                 // sendMessage();
 
                 Calculator calculator = new Calculator();
@@ -87,6 +90,23 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
                 String mData = mRoute.toString();
                 intent.putExtra("data",mData);
                 MapsActivity.this.startActivity(intent);
+
+                Context context = getApplicationContext();
+                    CharSequence text = "Now you have a new item in the >My trips< list!";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+
+                catch (Exception e){
+                    Context context = getApplicationContext();
+                    CharSequence text = "Please find a path first!";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
             }
         });
     }

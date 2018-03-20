@@ -1,5 +1,6 @@
 package com.example.hannahkern.tankup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 /**
@@ -97,6 +99,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         else if (id == R.id.calculaterr) {
+            Context context = getApplicationContext();
+            CharSequence text = "Now you have a new item in the >My trips< list!";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
             Calculator calculator = new Calculator();
             CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
 

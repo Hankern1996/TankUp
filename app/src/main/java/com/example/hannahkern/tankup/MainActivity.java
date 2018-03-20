@@ -1,5 +1,6 @@
 package com.example.hannahkern.tankup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener {
@@ -87,6 +89,13 @@ public class MainActivity extends AppCompatActivity
         }
 
         else if (id == R.id.calculaterr) {
+            Context context = getApplicationContext();
+            CharSequence text = "Now you have a new item in the >My trips< list!";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
             Calculator calculator = new Calculator();
 
             CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
