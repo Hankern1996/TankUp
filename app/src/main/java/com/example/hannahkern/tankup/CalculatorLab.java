@@ -20,7 +20,6 @@ import java.util.UUID;
 
 public class CalculatorLab {
     private static CalculatorLab sCalculatorLab;
-
     private Context mContext;
     private SQLiteDatabase mDatabase;
     //private List<Calculator> preSafe = new ArrayList<>();
@@ -36,7 +35,6 @@ public class CalculatorLab {
         mContext = context.getApplicationContext();
         mDatabase = new CalculatorBaseHelper(mContext)
                 .getWritableDatabase();
-
     }
 
     public void addCalculator(Calculator c) {
@@ -44,30 +42,22 @@ public class CalculatorLab {
         mDatabase.insert(CalculatorDbSchema.CalculatorTable.NAME, null, values);
     }
 
-
-
     public void deleteCalculator (Calculator c){
-
         String uuidString = c.getId().toString();
         ContentValues values = getContentValues(c);
-
         mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, CalculatorDbSchema.CalculatorTable.Cols.UUID+ " = ?",
                 new String[] { String.valueOf(uuidString) });
     }
 
     public void deleteLastCalculator (Calculator c){
-
         String uuidString = String.valueOf(LastInsert());
         ContentValues values = getContentValues(c);
-
         mDatabase.delete(CalculatorDbSchema.CalculatorTable.NAME, CalculatorDbSchema.CalculatorTable.Cols.UUID + " = ?",
                 new String[] {String.valueOf(uuidString)});
-
     }
 
     public List<Calculator> getCalculators() {
         List<Calculator> calculators = new ArrayList<>();
-
         CalculatorCursorWrapper cursor = queryCalculators(null, null);
 
         try {
@@ -83,7 +73,6 @@ public class CalculatorLab {
         return calculators;
     }
 
-
     public Calculator getCalculator (UUID id) {
         CalculatorCursorWrapper cursor = queryCalculators(
                 CalculatorDbSchema.CalculatorTable.Cols.UUID + " = ?",
@@ -94,7 +83,6 @@ public class CalculatorLab {
             if (cursor.getCount() == 0) {
                 return null;
             }
-
             cursor.moveToFirst();
             return cursor.getCalculator();
         } finally {
@@ -105,7 +93,6 @@ public class CalculatorLab {
     public void updateCalculator(Calculator calculator) {
         String uuidString = calculator.getId().toString();
         ContentValues values = getContentValues(calculator);
-
 
         mDatabase.update(CalculatorDbSchema.CalculatorTable.NAME, values,
                 CalculatorDbSchema.CalculatorTable.Cols.UUID + " = ?",
@@ -152,9 +139,7 @@ public class CalculatorLab {
         return ID;
     }
 
-
-        public File getPhotoFile(Calculator calculator) {
-        File filesDir = mContext.getFilesDir();
-        return new File(filesDir, calculator.getPhotoFilename());
-
+    public File getPhotoFile(Calculator calculator) {
+    File filesDir = mContext.getFilesDir();
+    return new File(filesDir, calculator.getPhotoFilename());
 }}

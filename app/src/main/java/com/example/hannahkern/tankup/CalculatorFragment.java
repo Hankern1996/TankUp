@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,11 +13,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,34 +24,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.hannahkern.tankup.database.CalculatorDbSchema;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.facebook.share.model.ShareContent;
-import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.ShareOpenGraphAction;
-import com.facebook.share.model.ShareOpenGraphContent;
-import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.widget.ShareButton;
-import com.facebook.share.widget.ShareDialog;
-
-
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by hannahkern on 28.02.18.
@@ -64,17 +46,12 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class CalculatorFragment extends Fragment {
     private static final String ARG_CALCULATOR_ID = "calculator_id";
     private static final String DIALOG_DATE = "DialogDate";
+    private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_PHOTO= 2;
 
     CallbackManager callbackManager;
 
-    private static final int REQUEST_DATE = 0;
-
     private Calculator mCalculator;
-
-    private int mSafed =1;
-
-    private SQLiteDatabase mDatabase;
-
     private TextView mMapskm;
     private EditText mTitle;
     private EditText mConsumption;
@@ -86,17 +63,10 @@ public class CalculatorFragment extends Fragment {
     private Button mCalculateButton;
     private Button mDeleteButton;
     private Button mSendButton;
-    private Button mSafe;
     private ImageButton mPhotoButton;
     private ImageView mPhotoView;
     private File mPhotoFile;
-
-    private static final int REQUEST_PHOTO= 2;
-
-
-
     private String item;
-
 
     public static CalculatorFragment newInstance(UUID calculatorId) {
         Bundle args = new Bundle();
@@ -115,7 +85,6 @@ public class CalculatorFragment extends Fragment {
         mCalculator = CalculatorLab.get(getActivity()).getCalculator(calculatorID);
 
         mPhotoFile = CalculatorLab.get(getActivity()).getPhotoFile(mCalculator);
-
     }
 
     @Override
@@ -123,7 +92,6 @@ public class CalculatorFragment extends Fragment {
         super.onPause();
             CalculatorLab.get(getActivity())
                     .updateCalculator(mCalculator);
-
     }
 
     private void updatePhotoView() {
@@ -140,13 +108,11 @@ public class CalculatorFragment extends Fragment {
         }
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_calculator, container, false);
-
 
         mPhotoButton = (ImageButton) v.findViewById(R.id.image_button);
 
@@ -225,18 +191,6 @@ public class CalculatorFragment extends Fragment {
                         // App code
                     }
                 });
-
-        /*mSafe = (Button) v.findViewById(R.id.safeButton);
-        //mSafe.setOnClickListener(listener);
-        mSafe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mSafed = 2;
-                //getActivity().finish();
-                CalculatorLab.get(getActivity()).addCalculator(mCalculator);
-            }
-        });*/
-
 
         mMapskm = (TextView) v.findViewById(R.id.mapskm);
 
@@ -405,8 +359,7 @@ public class CalculatorFragment extends Fragment {
 
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        
-        
+
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
@@ -418,7 +371,7 @@ public class CalculatorFragment extends Fragment {
             updateDate();
         }
 
-         else if (requestCode == REQUEST_PHOTO) {
+        else if (requestCode == REQUEST_PHOTO) {
         Uri uri = FileProvider.getUriForFile(getActivity(),
                 "com.example.hannahkern.tankup.fileprovider",
                 mPhotoFile);
@@ -506,8 +459,6 @@ public class CalculatorFragment extends Fragment {
         result1 = Math.round(result1);
         result = result1/100;
 
-
-
         // Displays the calculated result
         mResultText.setText(String.valueOf(result));
         mCalculator.setErgebnis(String.valueOf(result));
@@ -516,11 +467,7 @@ public class CalculatorFragment extends Fragment {
     private String getMessage() {
 
         String price = mResultText.getText().toString();
-
-
         @SuppressLint("StringFormatMatches") String message = getString(R.string.message, price);
-
         return message;
     }
-
 }

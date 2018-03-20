@@ -44,6 +44,4 @@ public class PictureUtils {
         // Read in and create final bitmap
         return BitmapFactory.decodeFile(path, options);
     }
-
-
 }

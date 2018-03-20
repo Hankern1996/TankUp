@@ -1,21 +1,16 @@
 package com.example.hannahkern.tankup;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +25,6 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
     public CalculatorAdapter mAdapter;
     private Calculator mCalculator;
 
-
     @Override
     public int getLayoutResource() {
         return R.layout.activity_main4;
@@ -43,11 +37,7 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
         mCalculatorRecyclerView = (RecyclerView) findViewById(R.id.calculator_recycler_view);
         mCalculatorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         updateUI();
-
-
     }
 
     @Override
@@ -61,7 +51,6 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
         CalculatorLab calculatorLab = CalculatorLab.get(this);
         List<Calculator> calculators = calculatorLab.getCalculators();
 
-
         if (mAdapter == null) {
             mAdapter = new CalculatorAdapter(calculators);
             mCalculatorRecyclerView.setAdapter(mAdapter);
@@ -69,7 +58,6 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
             mAdapter.setCalculators(calculators);
             mAdapter.notifyDataSetChanged();
         }
-
     }
 
     public class CalculatorHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -96,14 +84,12 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
             mTitleTextView.setText( mCalculator.getTitle());
         }
 
-
         @Override
         public void onClick(View view) {
             //Intent intent = CalculatorPagerActivity.newIntent(ListActivity.this, mCalculator.getId());
             Intent intent = CalculatorPagerActivity.newIntent(ListActivity.this, mCalculator.getId());
             startActivity(intent);
         }
-
     }
 
     public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorHolder> {
@@ -136,6 +122,4 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
             mCalculators = calculators;
         }
     }
-
-
 }

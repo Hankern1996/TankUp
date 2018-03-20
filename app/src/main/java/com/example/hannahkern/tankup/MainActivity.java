@@ -2,10 +2,6 @@ package com.example.hannahkern.tankup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -31,7 +26,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,10 +53,8 @@ public class MainActivity extends AppCompatActivity
                 Intent intent = CalculatorPagerActivity
                         .newIntent(getApplicationContext(), calculator.getId());
                 startActivity(intent);
-
             }
         });
-
     }
 
     @Override
@@ -82,13 +74,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
-
     @SuppressWarnings("StatementWithEmptyBody")
 
     public boolean onNavigationItemSelected(MenuItem item) {
-
-
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -99,7 +87,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         else if (id == R.id.calculaterr) {
-
             Calculator calculator = new Calculator();
 
             CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
@@ -109,31 +96,20 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_map) {
-
             Intent intent1 = new Intent(MainActivity.this, MapsActivity.class);
             MainActivity.this.startActivity(intent1);
-
-
 
         } else if (id == R.id.nav_share) {
             Intent intent1 = new Intent(MainActivity.this, BlogActivity.class);
             MainActivity.this.startActivity(intent1);
 
         } else if (id == R.id.nav_trips) {
-
-
-
             Intent intent1 = new Intent(MainActivity.this, ListActivity.class);
             MainActivity.this.startActivity(intent1);
-
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
 }

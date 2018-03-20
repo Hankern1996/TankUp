@@ -3,62 +3,30 @@ package com.example.hannahkern.tankup;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationManager;
-import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatCallback;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.view.ActionMode;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.logging.Logger;
-
 import Modules.DirectionFinder;
 import Modules.DirectionFinderListener;
 import Modules.Route;
@@ -86,14 +54,10 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
 
         btnFindPath = (Button) findViewById(R.id.btnFindPath);
         etOrigin = (EditText) findViewById(R.id.etOrigin);
@@ -111,13 +75,10 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
             @Override
             public void onClick(View view) {
 
-
                 // sendMessage();
 
                 Calculator calculator = new Calculator();
                 CalculatorLab.get(getApplicationContext()).addCalculator(calculator);
-
-
 
                 Intent intent = CalculatorPagerActivity
                         .newIntent(getApplicationContext(), calculator.getId());
@@ -126,24 +87,15 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
                 String mData = mRoute.toString();
                 intent.putExtra("data",mData);
                 MapsActivity.this.startActivity(intent);
-
-
-
             }
         });
-
-
     }
 
     public static final String EXTRA_MESSAGE = "com.example.hannahkern.tankup";
     public String sendMessage(){
 
         return mRoute;
-
-
     }
-
-
 
     private void sendRequest() {
         String origin = etOrigin.getText().toString();
@@ -156,7 +108,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
             Toast.makeText(this, "Please enter destination address!", Toast.LENGTH_SHORT).show();
             return;
         }
-
         try {
             new DirectionFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
@@ -185,15 +136,10 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
 
-
             return;
         }
         mMap.setMyLocationEnabled(true);
-
     }
-
-
-
 
     @Override
     public void onDirectionFinderStart() {
@@ -218,6 +164,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
             }
         }
     }
+
     private String mRoute;
     @Override
     public void onDirectionFinderSuccess(List<Route> routes) {
@@ -255,60 +202,5 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
 
             polylinePaths.add(mMap.addPolyline(polylineOptions));
         }
-
     }
-
 }
-
-
-/*
-
-import android.app.FragmentTransaction;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-  private GoogleMap mMap;
-
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_maps);
-      // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-      SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-              .findFragmentById(R.id.map);
-      mapFragment.getMapAsync(this);
-
-
-  }
-
-
-  /**
-   * Manipulates the map once available.
-   * This callback is triggered when the map is ready to be used.
-   * This is where we can add markers or lines, add listeners or move the camera. In this case,
-   * we just add a marker near Sydney, Australia.
-   * If Google Play services is not installed on the device, the user will be prompted to install
-   * it inside the SupportMapFragment. This method will only be triggered once the user has
-   * installed Google Play services and returned to the app.
-
-  @Override
-  public void onMapReady(GoogleMap googleMap) {
-      mMap = googleMap;
-
-      // Add a marker in Sydney and move the camera
-      LatLng sydney = new LatLng(-34, 151);
-      mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-      mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-  }
-}*/

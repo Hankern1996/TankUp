@@ -38,7 +38,6 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
 
     private Calculator mCalculator;
 
-
     @Override
     public int getLayoutResource() {
         return R.layout.activity_main3;
@@ -47,8 +46,6 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         UUID calculatorId = (UUID) getIntent()
                 .getSerializableExtra(EXTRA_CALCULATOR_ID);
@@ -79,7 +76,6 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -87,8 +83,4 @@ public class CalculatorPagerActivity extends BaseActivity implements  Navigation
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-
-
-
 }
