@@ -237,11 +237,11 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback, Di
             //button "change view"
 
             originMarkers.add(mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.start_blue))
+                    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.start_blue))
                     .title(route.startAddress)
                     .position(route.startLocation)));
             destinationMarkers.add(mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.end_green))
+                    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.end_green))
                     .title(route.endAddress)
                     .position(route.endLocation)));
 

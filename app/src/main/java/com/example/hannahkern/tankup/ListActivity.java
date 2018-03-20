@@ -43,6 +43,8 @@ public class ListActivity extends BaseActivity implements NavigationView.OnNavig
         mCalculatorRecyclerView = (RecyclerView) findViewById(R.id.calculator_recycler_view);
         mCalculatorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
         updateUI();
 
 

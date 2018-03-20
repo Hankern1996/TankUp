@@ -132,6 +132,10 @@ public class CalculatorFragment extends Fragment {
         } else {
             Bitmap bitmap = PictureUtils.getScaledBitmap(
                     mPhotoFile.getPath(), getActivity());
+            int width=200;
+            int height=300;
+            bitmap=Bitmap.createScaledBitmap(bitmap, width,height, true);
+
             mPhotoView.setImageBitmap(bitmap);
         }
     }
@@ -498,7 +502,11 @@ public class CalculatorFragment extends Fragment {
                 e.printStackTrace();}
 
         // Calculates the result
-        result = (value2 * value3 * value1) / (100 * value4);
+        double result1 = ((value2 * value3 * value1) / (100 * value4))*100;
+        result1 = Math.round(result1);
+        result = result1/100;
+
+
 
         // Displays the calculated result
         mResultText.setText(String.valueOf(result));
